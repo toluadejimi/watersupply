@@ -27,7 +27,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="{{ url('') }}/public/images/logo.svg" alt="logo">
+                                <img src="{{ url('') }}/public/assets/img/dinersclub.png" alt="logo">
                             </div>
 
                             @if ($errors->any())

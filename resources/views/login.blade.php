@@ -16,7 +16,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ url('') }}/public/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ url('') }}/public/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ url('') }}}/public/assets/img/dinersclub.png" />
 </head>
 
 <body>

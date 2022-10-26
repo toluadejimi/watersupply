@@ -40,7 +40,7 @@
 
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{ url('') }}/public/images/faces/face28.jpg" alt="profile"/>
+              <img src="{{ url('') }}/public/assets/img/avatar/avatar-4.png" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -53,7 +53,7 @@
               </a>
             </div>
           </li>
-       
+
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
           </button>

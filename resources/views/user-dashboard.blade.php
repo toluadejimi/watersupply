@@ -155,8 +155,8 @@
                                                     @elseif($data->status == 3)
                                                     <td><span class="badge rounded-pill bg-danger text-white">Returned</span></td>
                                                     @endif
-                                                    <td>{{date('F d, Y', strtotime($data->date))}}</td>
-                                                    <td>{{date('h:i:s A', strtotime($data->date))}}</td>
+                                                    <td>{{date('F d, Y', strtotime($data->created_at))}}</td>
+                                                    <td>{{date('h:i:s A', strtotime($data->created_at))}}</td>
 
 
                                                 </tr>

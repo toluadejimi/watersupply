@@ -121,7 +121,7 @@ Route::post('location', [AuthController::class,'location']);
 
 //tank
 Route::get('tank', [AuthController::class,'tank']);
-Route::post('tank_info', [AuthController::class,'tank_info']);
+Route::post('tank-info', [AuthController::class,'tank_info']);
 
 
 

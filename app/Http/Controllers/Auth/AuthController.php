@@ -51,46 +51,6 @@ class AuthController extends Controller
 
             if (Auth::user()->is_email_verified == 0) {
 
-                $user = User::where("id", Auth::id())->get();
-
-                $email_code = User::where('id', Auth::id())
-                    ->first()->email_code;
-
-                $new_email_code = User::where('id', Auth::id())
-                    ->first()->email_code;
-
-                $f_name = User::where('id', Auth::id())
-                    ->first()->f_name;
-
-                $email = User::where('id', Auth::id())
-                    ->first()->email;
-
-                $user_email = User::where('id', Auth::id())->first()->email;
-
-                $client = new Client([
-                    'base_uri' => 'https://api.elasticemail.com',
-                ]);
-
-                // The response to get
-                $res = $client->request('GET', '/v2/email/send', [
-                    'query' => [
-
-                        'apikey' => "$api_key",
-                        'from' => "$from",
-                        'fromName' => 'Cardy',
-                        'sender' => "$from",
-                        'senderName' => 'Cardy',
-                        'subject' => 'Verification Code',
-                        'to' => "$email",
-                        'bodyHtml' => view('notification.email-code', compact('email_code', 'f_name', 'app_name'))->render(),
-                        'encodingType' => 0,
-
-                    ],
-                ]);
-
-                $body = $res->getBody();
-                $array_body = json_decode($body);
-
                 return redirect('verify-email-code')->with('message', "Enter the verification code sent to $email");
             }else{
 

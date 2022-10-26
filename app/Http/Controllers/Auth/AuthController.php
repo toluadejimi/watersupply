@@ -51,7 +51,7 @@ class AuthController extends Controller
 
             if (Auth::user()->is_email_verified == 0) {
 
-                return redirect('verify-email-code')->with('message', "Enter the verification code sent to $email");
+                return redirect('verify-email-code')->with('message', "Enter the verification code sent to your email provided");
             }else{
 
                 return redirect('user-dashboard');

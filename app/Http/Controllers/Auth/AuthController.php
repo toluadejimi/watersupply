@@ -336,13 +336,11 @@ class AuthController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function destroy(Request $request)
+    public function log_out()
     {
-        Auth::guard('web')->logout();
+        Session::flush();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
+        Auth::logout();
 
         return redirect('/');
     }

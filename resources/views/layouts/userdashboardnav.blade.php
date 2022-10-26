@@ -34,10 +34,10 @@
           <span class="icon-menu"></span>
         </button>
         <ul class="navbar-nav mr-lg-2">
-          
+
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-         
+
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="{{ url('') }}/public/images/faces/face28.jpg" alt="profile"/>
@@ -47,15 +47,15 @@
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
+              <a class="dropdown-item" href="/log-out">
+                <i class="ti-power-off text-primary" ></i>
                 Logout
               </a>
             </div>
           </li>
-          
+
         </ul>
-      
+
       </div>
     </nav>
     <!-- partial -->
@@ -290,9 +290,9 @@
               </ul>
             </div>
           </li>
-        
-    
-          
+
+
+
         </ul>
       </nav>
       <!-- partial -->

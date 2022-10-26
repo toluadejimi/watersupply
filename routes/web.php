@@ -94,7 +94,11 @@ Route::post('reset-password-now', [MainController::class, 'reset_password_now'])
 
 Route::get('login_notification', 'MainController@loginNotification');
 
+
+
 Route::post('signin', [AuthController::class,'sign_in']);
+Route::get('log-out', [AuthController::class,'log_out']);
+
 
 
 //Registration

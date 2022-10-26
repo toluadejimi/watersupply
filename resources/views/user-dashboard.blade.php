@@ -10,7 +10,7 @@
                             <h6 class="font-weight-normal mb-0">What will like to do today <span class="text-primary"></span>
                             </h6>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                                 <div class="card-body">
                                     <p class="mb-4">Order</p>
                                     <p class="fs-30 mb-3">{{$total_order}}</p>
-                                    <a button type="button" href="fund-wallet" class="btn btn-inverse-secondary btn-fw text-white">Make an Order</button> </a>
+                                    <a button type="button" href="new-order" class="btn btn-inverse-secondary btn-fw text-white">Make an Order</button> </a>
 
                                 </div>
                             </div>
@@ -91,16 +91,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
-                    
+
                 </div>
-               
+
             </div>
 
 
 
 
 
-          
 
 
 
@@ -112,8 +111,9 @@
 
 
 
-            
-           
+
+
+
 
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">

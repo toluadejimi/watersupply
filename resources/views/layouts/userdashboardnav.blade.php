@@ -1,390 +1,361 @@
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="{{url('')}}/public/assets/" data-template="vertical-menu-template-free">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-
-  <script src="https://checkout.flutterwave.com/v3.js"></script>
-
-  <title>Cardy</title>
-
-  <meta name="description" content="" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{{url('')}}/public/assets/img/favicon/favicon.ico" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=..+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-
-  <!-- Icons. Uncomment required icon fonts -->
-  <link rel="stylesheet" href="{{url('')}}/public/assets/vendor/fonts/boxicons.css" />
-
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="{{url('')}}/public/assets/vendor/css/core.css" class="template-customizer-core-css" />
-  <link rel="stylesheet" href="{{url('')}}/public/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-  <link rel="stylesheet" href="{{url('')}}/public/assets/css/demo.css" />
-  <link rel="stylesheet" href="{{url('')}}/public/assets/css/card.css" />
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Vendors CSS -->
-  <link rel="stylesheet" href="{{url('')}}/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-  <link rel="stylesheet" href="{{url('')}}/public/assets/vendor/libs/apex-charts/apex-charts.css" />
-
-  <!-- Page CSS -->
-
-  <!-- Helpers -->
-  <script src="{{url('')}}/public/assets/vendor/js/helpers.js"></script>
-
-  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-  <script src="{{url('')}}/public/assets/js/config.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Water</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ url('') }}/public/vendors/feather/feather.css">
+  <link rel="stylesheet" href="{{ url('') }}/public/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="{{ url('') }}/public/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ url('') }}/public/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="{{ url('') }}/public/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="{{ url('') }}/public/js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ url('') }}/public/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ url('') }}/public/images/favicon.png" />
 </head>
-
 <body>
-  <!-- Layout wrapper -->
-  <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      <!-- Menu -->
-
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a href=" user-dashboard" class="app-brand-link">
-            <span class="app-brand-logo demo">
-              <img src="{{url('')}}/public/assets/img/illustrations/logo.png" height="50" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" /> </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2"></span>
-          </a>
-
-          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-          </a>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{{ url('') }}/public/images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ url('') }}/public/images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+         
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="{{ url('') }}/public/images/faces/face28.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+          
+        </ul>
+      
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
         </div>
-
-        <div class="menu-inner-shadow"></div>
-
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <li class="menu-item active">
-            <a href="/user-dashboard" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
+      </div>
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
           </li>
-
-
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Bills Payment</span>
-          </li>
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-transfer-alt"></i>
-              <div data-i18n="Account Settings">Transfer</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="/bank-transfer" class="menu-link">
-                  <div data-i18n="Account">Bank Transfer</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/send-money-phone" class="menu-link">
-                  <div data-i18n="Notifications">Cardy Transfer</div>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-phone"></i>
-              <div data-i18n="Account Settings">Airtime & Data</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="/buy-airtime" class="menu-link">
-                  <div data-i18n="Account">Airtime</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/buy-data" class="menu-link">
-                  <div data-i18n="Notifications">Data</div>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-barcode"></i>
-              <div data-i18n="Account Settings">Others</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="/cable" class="menu-link">
-                  <div data-i18n="Account">Cable Tv</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/buy-data" class="menu-link">
-                  <div data-i18n="Notifications">Exams Strach Card</div>
-                </a>
-              </li>
-
-              <li class="menu-item">
-                <a href="/buy-eletricity" class="menu-link">
-                  <div data-i18n="Notifications">Eletricity</div>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-
-          <!-- Components -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Cards</span></li>
-
-          <!-- User interface -->
-          <li class="menu-item">
-            <a href="/my-cards" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="User interface">My Virtual Cards</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="/my-card" class="menu-link">
-                  <div data-i18n="Accordion">All Cards</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/create-usd-card" class="menu-link">
-                  <div data-i18n="Accordion">Create USD Card</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/create-ngn-card" class="menu-link">
-                  <div data-i18n="Accordion">Create NGN Card</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/usd-card" class="menu-link">
-                  <div data-i18n="Accordion">USD Card</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="/ngn-card" class="menu-link">
-                  <div data-i18n="Alerts">NGN Card</div>
-                </a>
-              </li>
-
-
-            </ul>
-          </li>
-
-
-
-
-          <!-- Forms & Tables -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Account</span></li>
-          <!-- Forms -->
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-user"></i>
-              <div data-i18n="Form Elements">Profile</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="/profile" class="menu-link">
-                  <div data-i18n="Basic Inputs">My Profile</div>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-          <!-- Misc -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Support</span></li>
-          <li class="menu-item">
-            <a href="https://cardysupport.tawk.help/" target="_blank" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-support"></i>
-              <div data-i18n="Support">Chat With us</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="/terms" target="_blank" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-file"></i>
-              <div data-i18n="Documentation">Terms and Condition</div>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
           </li>
         </ul>
-      </aside>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
-      <div class="layout-page">
-        <!-- Navbar -->
-
-        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-
-
-          </div>
-
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-
-            <h4 class="mb-0">NGN {{number_format ($user_wallet), 2}}</h4>
-
-
-          </div>
-          <!-- /Search -->
-
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <!-- Place this tag where you want the button to render. -->
-              <li class="nav-item lh-1 me-3">
-
-              </li>
-
-              <!-- User -->
-              <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                  @if(Auth::user()->gender == 'male')
-                    <img src="{{url('')}}/public/assets/img/avatars/male.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                    @else
-                    <img src="{{url('')}}/public/assets/img/avatars/female.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                  @endif
+        <div class="tab-content" id="setting-content">
+          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            <div class="add-items d-flex px-3 mb-0">
+              <form class="form w-100">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                </div>
+              </form>
+            </div>
+            <div class="list-wrapper px-3">
+              <ul class="d-flex flex-column-reverse todo-list">
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Team review meeting at 3.00 PM
+                    </label>
                   </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <div class="d-flex">
-                        <div class="flex-shrink-0 me-3">
-                          <div class="avatar avatar-online">
-                          @if(Auth::user()->gender == 'male')
-                    <img src="{{url('')}}/public/assets/img/avatars/male.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                    @else
-                    <img src="{{url('')}}/public/assets/img/avatars/female.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-                  @endif
-                          </div>
-                        </div>
-                        <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">{{Auth::user()->f_name}} {{Auth::user()->l_name}}</span>
-
-                          @if(Auth::user()->type =='2')
-                          <small class="text-muted">Customer</small>
-                          @elseif(Auth::user()->type =='1')
-                          <small class="text-muted">Admin</small>
-                          @else
-                          <small class="text-muted">Agent</small>
-                          @endif
-
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/profile">
-                      <i class="bx bx-user me-2"></i>
-                      <span class="align-middle">My Profile</span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/logout">
-                      <i class="bx bx-power-off me-2"></i>
-                      <span class="align-middle">Log Out</span>
-                    </a>
-                  </li>
-                </ul>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Prepare for presentation
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      Resolve all the low priority tickets due today
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li class="completed">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox" checked>
+                      Schedule meeting for next week
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+                <li class="completed">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox" checked>
+                      Project review
+                    </label>
+                  </div>
+                  <i class="remove ti-close"></i>
+                </li>
+              </ul>
+            </div>
+            <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary mr-2"></i>
+                <span>Feb 11 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+              <p class="text-gray mb-0">The total number of sessions</p>
+            </div>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary mr-2"></i>
+                <span>Feb 7 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+              <p class="text-gray mb-0 ">Call Sarah Graves</p>
+            </div>
+          </div>
+          <!-- To do section tab ends -->
+          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+            <div class="d-flex align-items-center justify-content-between border-bottom">
+              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
+            </div>
+            <ul class="chat-list">
+              <li class="list active">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Thomas Douglas</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">19 min</small>
               </li>
-              <!--/ User -->
+              <li class="list">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <div class="wrapper d-flex">
+                    <p>Catherine</p>
+                  </div>
+                  <p>Away</p>
+                </div>
+                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                <small class="text-muted my-auto">23 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Daniel Russell</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">14 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <p>James Richardson</p>
+                  <p>Away</p>
+                </div>
+                <small class="text-muted my-auto">2 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">{{ url('') }}/public/
+                  <p>Madeline Kennedy</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">5 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="{{ url('') }}/public/images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Sarah Graves</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">47 min</small>
+              </li>
             </ul>
           </div>
-        </nav>
-
-        <!-- / Navbar -->
-
-        @yield('content')
-
-        <!-- Footer -->
-        <footer class="content-footer footer bg-footer-theme">
-          <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-            <div class="mb-2 mb-md-0">
-              ©
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              ,
-              <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Cardy</a>
-            </div>
-            <div>
-               </div>
-          </div>
-        </footer>
-        <!-- / Footer -->
-
-        <div class="content-backdrop fade"></div>
+          <!-- chat tab ends -->
+        </div>
       </div>
-      <!-- Content wrapper -->
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Orders</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/new-order">New Order</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/order-history">Order History</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
+            </a>
+
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="my-account">My Account</a></li>
+                </ul>
+              </div>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="change-password">Change Password</a></li>
+              </ul>
+            </div>
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="change-email">Change Email</a></li>
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Support</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Log a complain</a></li>
+              </ul>
+
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Contact Support</a></li>
+              </ul>
+            </div>
+          </li>
+        
+    
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+
+
+
+      @yield('content')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022. Waters All rights reserved.</span>
+            </div>
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
     </div>
-    <!-- / Layout page -->
-  </div>
+    <!-- container-scroller -->
 
-  <!-- Overlay -->
-  <div class="layout-overlay layout-menu-toggle"></div>
-  </div>
-  <!-- / Layout wrapper -->
+    <!-- plugins:js -->
+    <script src="{{ url('') }}/public/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{{ url('') }}/public/vendors/chart.js/Chart.min.js"></script>
+    <script src="{{ url('') }}/public/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="{{ url('') }}/public/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="{{ url('') }}/public/js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{ url('') }}/public/js/off-canvas.js"></script>
+    <script src="{{ url('') }}/public/js/hoverable-collapse.js"></script>
+    <script src="{{ url('') }}/public/js/template.js"></script>
+    <script src="{{ url('') }}/public/js/settings.js"></script>
+    <script src="{{ url('') }}/public/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{ url('') }}/public/js/dashboard.js"></script>
+    <script src="{{ url('') }}/public/js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+
+  </html>
 
 
 
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="{{url('')}}/public/assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="{{url('')}}/public/assets/vendor/libs/popper/popper.js"></script>
-  <script src="{{url('')}}/public/assets/vendor/js/bootstrap.js"></script>
-  <script src="{{url('')}}/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-  <script src="{{url('')}}/public/assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
-
-  <!-- Vendors JS -->
-  <script src="{{url('')}}/public/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-  <!-- Main JS -->
-  <script src="{{url('')}}/public/assets/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="{{url('')}}/public/assets/js/dashboards-analytics.js"></script>
-
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-</body>
-
-</html>

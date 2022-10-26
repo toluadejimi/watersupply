@@ -6,31 +6,106 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Client;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use GuzzleHttp\Client;
-
-
+use Session;
 
 class AuthController extends Controller
 {
 
-    public function create()
+    public function login_view()
     {
-        return view('auth.login');
+        return view('login');
     }
 
-
-    public function register_view(){
+    public function register_view()
+    {
 
         return view('register');
 
+    }
+
+    public function sign_in(Request $request)
+    {
+
+        $app_name =env('APP_NAME');
+        $api_key = env('ELASTIC_API');
+        $from = env('FROM_API');
+
+        $email_code = random_int(100000, 999999);
+
+        $credentials = $request->validate([
+            'email' => ['required', 'string'],
+            'password' => ['required'],
+        ]);
+
+
+
+
+
+
+        if (Auth::attempt(['email' => $request->input('email'),
+            'password' => $request->input('password')])){
+
+            if (Auth::user()->is_email_verified == 0) {
+
+                $user = User::where("id", Auth::id())->get();
+
+                $email_code = User::where('id', Auth::id())
+                    ->first()->email_code;
+
+                $new_email_code = User::where('id', Auth::id())
+                    ->first()->email_code;
+
+                $f_name = User::where('id', Auth::id())
+                    ->first()->f_name;
+
+                $email = User::where('id', Auth::id())
+                    ->first()->email;
+
+                $user_email = User::where('id', Auth::id())->first()->email;
+
+                $client = new Client([
+                    'base_uri' => 'https://api.elasticemail.com',
+                ]);
+
+                // The response to get
+                $res = $client->request('GET', '/v2/email/send', [
+                    'query' => [
+
+                        'apikey' => "$api_key",
+                        'from' => "$from",
+                        'fromName' => 'Cardy',
+                        'sender' => "$from",
+                        'senderName' => 'Cardy',
+                        'subject' => 'Verification Code',
+                        'to' => "$email",
+                        'bodyHtml' => view('notification.email-code', compact('email_code', 'f_name', 'app_name'))->render(),
+                        'encodingType' => 0,
+
+                    ],
+                ]);
+
+                $body = $res->getBody();
+                $array_body = json_decode($body);
+
+                return redirect('verify-email-code')->with('message', "Enter the verification code sent to $email");
+            }else{
+
+                return redirect('user-dashboard');
+
+            }
+
+
+
+        } return back()->with('error', 'Incorrect Credientials');
 
     }
 
-
-    public function register_now(Request $request){
+    public function register_now(Request $request)
+    {
 
         $email_code = $random = mt_rand(100000, 999999);
 
@@ -44,10 +119,6 @@ class AuthController extends Controller
             'password' => ['required', 'confirmed'],
         ]);
 
-
-
-
-
         $phone = $request->phone;
         $f_name = $request->f_name;
         $l_name = $request->l_name;
@@ -55,17 +126,16 @@ class AuthController extends Controller
         $gender = $request->gender;
         $password = $request->password;
 
-
         $user = new User();
         $user->f_name = $f_name;
         $user->l_name = $l_name;
         $user->phone = $phone;
         $user->email = $email;
+        $user->type = 2;
         $user->email_code = $email_code;
         $user->gender = $gender;
         $user->password = Hash::make($password);
-        $user-> save();
-
+        $user->save();
 
         $client = new Client([
             'base_uri' => 'https://api.elasticemail.com',
@@ -82,7 +152,7 @@ class AuthController extends Controller
                 'senderName' => $app_name,
                 'subject' => 'Verification Code',
                 'to' => "$email",
-                'bodyHtml' => view('notification.email-code', compact('f_name','email_code','app_name'))->render(),
+                'bodyHtml' => view('notification.email-code', compact('f_name', 'email_code', 'app_name'))->render(),
                 'encodingType' => 0,
 
             ],
@@ -91,56 +161,163 @@ class AuthController extends Controller
         $body = $res->getBody();
         $array_body = json_decode($body);
 
+        return redirect('welcome')->with('message', 'Your account has been successfully created');
+
+    }
 
 
 
+    public function verify_email_code(Request $request)
+    {
 
+        $user_email = User::where('id', Auth::id())
+        ->first()->email;
 
-
-
-
-
-
-
-
-
-        return view('register');
+        return view('verify-email-code', compact('user_email'));
 
 
     }
 
 
 
+    public function verify_code(Request $request)
+    {
+        $app_name =env('APP_NAME');
+        $api_key = env('ELASTIC_API');
+        $from = env('FROM_API');
 
-    // $client = new Client([
-    //     'base_uri' => 'https://api.elasticemail.com',
-    // ]);
+        $code= $request->code;
 
-    // // The response to get
-    // $res = $client->request('GET', '/v2/email/send', [
-    //     'query' => [
+        $email= User::where('id', Auth::id())
+        ->first()->email;
 
-    //         'apikey' => "$api_key",
-    //         'from' => "$from",
-    //         'fromName' => $app_name,
-    //         'sender' => "$from",
-    //         'senderName' => $app_name,
-    //         'subject' => 'Welcome on Board',
-    //         'to' => "$email",
-    //         'bodyHtml' => view('notification.register', compact('f_name', 'app_name'))->render(),
-    //         'encodingType' => 0,
+        $f_name= User::where('id', Auth::id())
+        ->first()->f_name;
 
-    //     ],
-    // ]);
-
-    // $body = $res->getBody();
-    // $array_body = json_decode($body);
+        $email_code = User::where('id', Auth::id())
+        ->first()->email_code;
 
 
+        if($code !== $email_code){
+
+            return back()->with('error', 'Invalid verification code');
+
+        }
+
+        $update = User::where('id', Auth::id())
+        ->update(['is_email_verified'=> 1]);
+
+                $client = new Client([
+                'base_uri' => 'https://api.elasticemail.com',
+            ]);
+
+            // The response to get
+            $res = $client->request('GET', '/v2/email/send', [
+                'query' => [
+
+                    'apikey' => "$api_key",
+                    'from' => "$from",
+                    'fromName' => $app_name,
+                    'sender' => "$from",
+                    'senderName' => $app_name,
+                    'subject' => 'Welcome on Board',
+                    'to' => "$email",
+                    'bodyHtml' => view('notification.register', compact('f_name', 'app_name'))->render(),
+                    'encodingType' => 0,
+
+                ],
+            ]);
+
+            $body = $res->getBody();
+            $array_body = json_decode($body);
+
+        return redirect('location-information')->with('message', 'Your email has been verified');
+
+    }
+
+
+    public function update_email(Request $request)
+    {
+        return view('update-email');
+
+    }
+
+
+    public function location_info(Request $request)
+    {
+        return view('location-information');
+
+    }
+
+    public function location(Request $request)
+    {
+
+        $apt = $request->apt;
+        $lga = $request->lgg;
+        $city = $request->city;
+        $state = $request->state;
+        $street = $request->street;
+
+        $update = User::where('id', Auth::id())
+        ->update([
+
+            'apt' => $apt,
+            'lga' => $lga,
+            'city' => $city,
+            'state' => $state,
+            'street' => $street,
+
+        ]);
+
+        return redirect('tank')->with('message', 'Your Location as been successfully submitted');
+
+    }
+
+
+    public function tank(Request $request)
+    {
+        return view('tank');
+
+    }
+
+
+
+    public function tank_info(Request $request)
+    {
+
+        $tank_size = $request->tank_size;
+
+        $update = User::where('id', Auth::id())
+        ->update([
+
+            'tank_size' => $tank_size
+
+        ]);
+
+        return redirect('user-dashboard')->with('message', 'Your are all set');
+
+    }
 
 
 
 
+
+
+
+
+
+
+    public function update_email_now(Request $request)
+    {
+
+        $email= $request->email;
+
+
+        $update = User::where('id', Auth::id())
+        ->update(['email'=> $email]);
+        return redirect('welcome')->with('message', 'Your Email has been chnage successfully');
+
+    }
 
 
 
@@ -158,7 +335,6 @@ class AuthController extends Controller
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
-
 
     public function destroy(Request $request)
     {

@@ -9,8 +9,5 @@ class Bank extends Model
 {
     use HasFactory;
 
-    public function bailingItems()
-    {
-        return $this->belongsToMany(Sorting::class);
-    }
+  
 }

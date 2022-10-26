@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ManageController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,7 +63,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/welcome', [MainController::class,'login_view']);
+Route::get('/welcome', [AuthController::class,'login_view']);
 
 
 
@@ -93,14 +94,33 @@ Route::post('reset-password-now', [MainController::class, 'reset_password_now'])
 
 Route::get('login_notification', 'MainController@loginNotification');
 
-Route::get('signin', [MainController::class,'signin']);
+Route::post('signin', [AuthController::class,'sign_in']);
 
 
 //Registration
 Route::get('/register', [AuthController::class,'register_view']);
 Route::post('register-now', [AuthController::class,'register_now']);
-Route::get('verify-email-code', [MainController::class,'verify_email_code']);
-Route::post('verify-email-code-now', [MainController::class,'verify_email_code_now']);
+
+//verification
+Route::get('verify-email-code', [AuthController::class,'verify_email_code']);
+Route::post('verify-code', [AuthController::class,'verify_code']);
+
+//email
+Route::get('update-email', [AuthController::class,'update_email']);
+Route::post('update-email-now', [AuthController::class,'update_email_now']);
+
+
+//location
+Route::get('location-information', [AuthController::class,'location_info']);
+Route::post('location', [AuthController::class,'location']);
+
+
+//tank
+Route::get('tank', [AuthController::class,'tank']);
+Route::post('tank_info', [AuthController::class,'tank_info']);
+
+
+
 Route::get('send-verification-code', [MainController::class,'send_verification_code']);
 Route::post('register-verify-email', [MainController::class,'email_verify_code']);
 
@@ -138,10 +158,24 @@ Route::get('/verify-change-account', [MainController::class,'verify_change_accou
 
 Route::group(['middleware' => 'adminAuth'],function(){
 
+
+    //dashboard
     Route::get('/user-dashboard', [MainController::class,'user_dashboard']);
 
 
-    Route::get('/my-card', [MainController::class,'my_card']);
+
+    //Order
+    Route::get('/new-order', [OrderController::class,'new_order']);
+    Route::post('/new-order-now', [OrderController::class,'new_order_now']);
+    Route::get('/preview-order', [OrderController::class,'preview_order']);
+
+    Route::get('/order-history', [OrderController::class,'order_history']);
+
+
+
+
+
+
 
     Route::get('/bank-transfer', [MainController::class,'bank_transfer']);
     Route::post('/withdraw-now', [MainController::class,'withdraw_now']);

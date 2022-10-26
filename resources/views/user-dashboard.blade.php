@@ -1,159 +1,185 @@
 @extends('layouts.userdashboardnav')
-
 @section('content')
-<!-- Content wrapper -->
-<div class="content-wrapper">
-  <!-- Content -->
-
-  <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-      <div class="col-lg-12 mb-4 order-0">
-        <div class="card">
-          <div class="d-flex align-items-end row">
-            <div class="col-sm-7">
-              <div class="card-body">
-
-                @if(Auth::user()->is_kyc_verified =='0')
-                <h5 class="card-title text-primary">Congratulations {{Auth::user()->f_name}}! 🎉</h5>
-                <p class="mb-4">
-                  <b>Welcome onboard.</b> To enjoy all the features of cardy please verify your account.
-
-                </p>
-
-                <a href="verify-account" class="btn btn-sm btn-outline-primary">Verify Account</a>
-
-                @else
-                <h5 class="card-title text-primary">Congratulations {{Auth::user()->f_name}}! 🎉</h5>
-                <p class="mb-4">
-                  <b>Lets begin.</b> Enjoy swift and Amazing services on Cardy.
-
-                </p>
-
-                <a href="/fund-wallet" class="btn btn-sm btn-outline-primary">Fund Wallet</a>
-                <a href="/usd-card" class="btn btn-sm btn-outline-primary">USD Virtual Card</a>
-                <a href="/ngn-card" class="btn btn-sm btn-outline-primary">NGN Virtual Card</a>
-                <a href="/buy-airtime" class="btn btn-sm btn-outline-primary">Airtime</a>
-                <a href="/data" class="btn btn-sm btn-outline-primary">Data</a>
-                @endif
-
-
-              </div>
-            </div>
-
-
-
-            <div class="col-sm-5 text-center text-sm-left">
-              <div class="card-body pb-0 px-0 px-md-4">
-                <img src="{{url('')}}/public/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6 mb-4 order-0">
-          @if ($errors->any())
-          <div class="alert alert-danger">
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-          @endif
-          @if (session()->has('message'))
-          <div class="alert alert-success">
-            {{ session()->get('message') }}
-          </div>
-          @endif
-          @if (session()->has('error'))
-          <div class="alert alert-danger">
-            {{ session()->get('error') }}
-          </div>
-          @endif
-
-        </div>
-      </div>
-
-
-
-      <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="row">
-          <div class="col-lg-12 mb-4 order-0">
-            <div class="card">
-              <div class="d-flex align-items-end row">
-                <div class="col-sm-12">
-                  <div class="card-body">
-
-                    @if(Auth::user()->is_kyc_verified =='0')
-                    <h5> Transactions </h5>
-                    <p class="mb-4">
-                      No Records Found
-                    </p>
-
-
-                    @else
-                    <div class="card">
-                      <h5 class="card-header">Latest Transaction </h5>
-                      <div class="table-responsive text-nowrap">
-                        <table id="myTable" class="table table-white">
-                          <thead>
-                            <tr>
-                              <th>Trx ID</th>
-                              <th>Type</th>
-                              <th>Amount</th>
-                              <th>Description</th>
-                              <th>Date</th>
-                              <th>Time</th>
-
-                            </tr>
-                          </thead>
-                          <tbody class="table-border-bottom-0">
-                            @forelse ($transactions as $item)
-                            <tr>
-                              <td>{{$item->ref_trans_id}}</td>
-                              @if($item->transaction_type  == "Cardy Transfer" &&  $item->from_user_id  == Auth::user()->id)
-                              <td><span class="badge rounded-pill bg-warning ">Debit</span></td>
-                              @elseif($item->transaction_type == "cash_out")
-                              <td><span class="badge rounded-pill bg-warning">Debit</span></td>
-                              @elseif($item->transaction_type == "Withdrawl")
-                              <td><span class="badge rounded-pill bg-warning">Debit</span></td>
-                              @else
-                              <td><span class="badge rounded-pill bg-success">Credit</span></td>
-                              @endif
-                              <td>{{number_format($item->debit, 2)}}</td>
-                              <td>{{$item->note}}</td>
-                              <td>{{date('F d, Y', strtotime($item->created_at))}}</td>
-                              <td>{{date('h:i:s A', strtotime($item->created_at))}}</td>
-
-                            </tr>
-                            @empty
-                            <tr colspan="20" class="text-center">No Record Found</tr>
-                            @endforelse
-                      </div>
-                      </tbody>
-                      </table>
-
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <div class="row">
+                        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                            <h3 class="font-weight-bold">Welcome {{ $f_name }} {{ $l_name }}</h3>
+                            <h6 class="font-weight-normal mb-0">What will like to do today <span class="text-primary"></span>
+                            </h6>
+                        </div>
+                       
                     </div>
-                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card tale-bg">
+                        <div class="card-people mt-auto">
+                            <img src="{{ url('') }}/public/images/dashboard/people.svg" alt="people">
+                            <div class="weather-info">
+                                <div class="d-flex">
+                                    <div>
+                                        <h2 class="mb-0 font-weight-normal"><i
+                                                class="icon-sun mr-2"></i>{{ $temp }}<sup>C</sup></h2>
+                                    </div>
+                                    <div class="ml-2">
+                                        <h4 class="location font-weight-normal">Lagos</h4>
+                                        <h6 class="font-weight-normal">Nigeria</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-6 grid-margin transparent">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 stretch-card transparent">
+                            <div class="card card-tale">
+                                <div class="card-body">
+                                    <p class="mb-4">My Wallet</p>
+                                    <p class="fs-30 mb-4">NGN {{$wallet}}</p>
+                                    <a button type="button" href="fund-wallet" class="btn btn-inverse-primary btn-fw text-white">Fund Wallet</button> </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 stretch-card transparent">
+                            <div class="card card-dark-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Order</p>
+                                    <p class="fs-30 mb-3">{{$total_order}}</p>
+                                    <a button type="button" href="fund-wallet" class="btn btn-inverse-secondary btn-fw text-white">Make an Order</button> </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                            <div class="card card-light-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Money Out</p>
+                                    <p class="fs-30 mb-3">NGN {{number_format($money_out), 2}}</p>
+                                    <p>All money spent</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 stretch-card transparent">
+                            <div class="card card-light-danger">
+                                <div class="card-body">
+                                    <p class="mb-4">Total Pending Orders</p>
+                                    <p class="fs-30 mb-3">{{$pending_order}}</p>
+                                    <p>All pending orders</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    
+                </div>
+               
+            </div>
+
+
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+            
+           
+
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title">Recent Order</p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table id="example" class="display expandable-table" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order ID</th>
+                                                    <th>Amount</th>
+                                                    <th>Tank Size</th>
+                                                    <th>Status</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+
+
+                                                </tr>
+
+
+                                            </thead>
+
+                                            <tbody class="table-border-bottom-0">
+
+
+
+                                                @forelse ($orders as $data)
+                                                <tr>
+                                                    <td>{{$data->order_id}}</td>
+                                                    <td>{{number_format($data->amount)  }}</td>
+                                                    <td>{{ $data->tank_size }} Liters</td>
+                                                    @if($data->status == 0)
+                                                    <td><span class="badge rounded-pill bg-warning text-white">Pending</span></td>
+                                                    @elseif($data->status == 1)
+                                                    <td><span class="badge rounded-pill bg-success text-white">Delivered</span></td>
+                                                    @elseif($data->status == 3)
+                                                    <td><span class="badge rounded-pill bg-danger text-white">Returned</span></td>
+                                                    @endif
+                                                    <td>{{date('F d, Y', strtotime($data->date))}}</td>
+                                                    <td>{{date('h:i:s A', strtotime($data->date))}}</td>
+
+
+                                                </tr>
+                                                @empty
+                                                <tr colspan="20" class="text-center">No History Found</tr>
+                                                @endforelse
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
-                {!! $transactions->appends(Request::all())->links() !!}
-              </div>
             </div>
-            @endif
-          </div>
         </div>
-      </div>
-      </div>
-
-
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<!-- / Content -->
-@endsection
+    @endsection

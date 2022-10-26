@@ -5,7 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>New Order</title>
+    <title>Order Preview
+    </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('') }}/public/vendors/feather/feather.css">
     <link rel="stylesheet" href="{{ url('') }}/public/vendors/ti-icons/css/themify-icons.css">
@@ -265,7 +266,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
                             <span class="menu-title">Orders</span>
@@ -273,14 +274,14 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item active"> <a class="nav-link" href="/new-order">New Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/new-order">New Order</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/order-history">Order History</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                        <a class="nav-link active" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                             aria-controls="form-elements">
                             <i class="icon-head menu-icon"></i>
                             <span class="menu-title">Account</span>

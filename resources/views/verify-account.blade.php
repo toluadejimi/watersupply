@@ -208,7 +208,7 @@
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="forms-basic-inputs.html" class="menu-link">
-                    <div data-i18n="Basic Inputs">Change Password</div>
+                    <div data-i18n="Basic Inputs">Security</div>
                   </a>
                 </li>
                 <li class="menu-item">

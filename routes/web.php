@@ -172,8 +172,26 @@ Route::group(['middleware' => 'adminAuth'],function(){
     Route::get('/new-order', [OrderController::class,'new_order']);
     Route::post('/new-order-now', [OrderController::class,'new_order_now']);
     Route::get('/preview-order', [OrderController::class,'preview_order']);
-
     Route::get('/order-history', [OrderController::class,'order_history']);
+
+
+    //Account
+    Route::get('/my-account', [MainController::class,'my_account']);
+    Route::post('/update-account', [MainController::class,'update_account']);
+    Route::post('/update-email', [MainController::class,'update_email']);
+    Route::post('/update-password', [MainController::class,'update_password']);
+
+    Route::get('/security', [MainController::class,'security']);
+    Route::post('/update-info', [MainController::class,'update_info']);
+
+
+    //Support
+    Route::get('/support', [MainController::class,'support']);
+    Route::post('/post-support', [MainController::class,'post_support']);
+
+
+
+
 
 
 

@@ -6,11 +6,10 @@ use App\Models\Bank;
 use App\Models\Order;
 use App\Models\Tank;
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use GuzzleHttp\Client;
-
 
 class OrderController extends Controller
 {
@@ -42,9 +41,8 @@ class OrderController extends Controller
         $tank_size = Tank::all();
 
         $orders = Order::orderBy('id', 'DESC')
-        ->where('user_id', Auth::id())
-        ->take(10)->get();
-
+            ->where('user_id', Auth::id())
+            ->take(10)->get();
 
         $user_apt = User::where('id', Auth::id())
             ->first()->apt;
@@ -120,11 +118,6 @@ class OrderController extends Controller
             $bank_name = Bank::all()->first()->bank_name;
             $account_number = Bank::all()->first()->account_number;
 
-
-
-
-
-
             $client = new Client([
                 'base_uri' => 'https://api.elasticemail.com',
             ]);
@@ -179,21 +172,45 @@ class OrderController extends Controller
             $body = $res->getBody();
             $array_body = json_decode($body);
 
-            return view('preview-order', compact('date','f_name', 'account_name', 'account_number', 'bank_name', 'order_id', 'tank_size', 'l_name', 'tank_id', 'reoccur', 'reoccur_range', 'payment_mode', 'order_id'));
+            return view('preview-order', compact('date', 'f_name', 'account_name', 'account_number', 'bank_name', 'order_id', 'tank_size', 'l_name', 'tank_id', 'reoccur', 'reoccur_range', 'payment_mode', 'order_id'));
 
         }
 
     }
 
-
-
-
     public function preview_order()
     {
 
-
         return view('preview-order');
 
+    }
+
+    public function order_history()
+    {
+
+        $orders = Order::orderBy('id', 'DESC')
+            ->where('user_id', Auth::id())
+            ->paginate(10);
+
+        $f_name = User::where('id', Auth::id())
+            ->first()->f_name;
+
+        $l_name = User::where('id', Auth::id())
+            ->first()->l_name;
+
+        $delivered_order = Order::where('user_id', Auth::id())
+            ->where('status', 1)
+            ->count();
+
+        $pending_order = Order::where('user_id', Auth::id())
+            ->where('status', 0)
+            ->count();
+
+        $money_out = Order::where('user_id', Auth::id())
+            ->where('status', 1)
+            ->sum('amount');
+
+        return view('order-history',compact('orders','f_name','l_name','delivered_order','pending_order','money_out'));
 
     }
 

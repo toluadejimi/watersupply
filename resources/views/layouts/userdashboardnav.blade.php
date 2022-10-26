@@ -269,7 +269,7 @@
               </div>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="change-password">Change Password</a></li>
+                <li class="nav-item"><a class="nav-link" href="security">Security</a></li>
               </ul>
             </div>
             <div class="collapse" id="form-elements">

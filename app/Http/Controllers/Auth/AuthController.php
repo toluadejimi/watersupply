@@ -92,6 +92,7 @@ class AuthController extends Controller
         $user->phone = $phone;
         $user->email = $email;
         $user->type = 2;
+        $user->wallet = 0;
         $user->email_code = $email_code;
         $user->gender = $gender;
         $user->password = Hash::make($password);

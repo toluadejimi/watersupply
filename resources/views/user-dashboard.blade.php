@@ -47,16 +47,8 @@
 
                 <div class="col-md-6 grid-margin transparent">
                     <div class="row">
-                        <div class="col-md-6 mb-4 stretch-card transparent">
-                            <div class="card card-tale">
-                                <div class="card-body">
-                                    <p class="mb-4">My Wallet</p>
-                                    <p class="fs-30 mb-4">NGN {{$wallet}}</p>
-                                    <a button type="button" href="fund-wallet" class="btn btn-inverse-primary btn-fw text-white">Fund Wallet</button> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 stretch-card transparent">
+
+                         <div class="col-md-6 mb-4 stretch-card transparent">
                             <div class="card card-dark-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Order</p>
@@ -66,6 +58,18 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+                        <div class="col-md-6 mb-4 stretch-card transparent">
+                            <div class="card card-tale">
+                                <div class="card-body">
+                                    <p class="mb-4">My Wallet</p>
+                                    <p class="fs-30 mb-4">NGN {{$wallet}}</p>
+                                    <a button type="button" href="fund-wallet" class="btn btn-inverse-primary btn-fw text-white">Fund Wallet</button> </a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">

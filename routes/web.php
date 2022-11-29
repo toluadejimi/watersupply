@@ -6,6 +6,7 @@ use App\Http\Controllers\ManageController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -173,6 +174,11 @@ Route::group(['middleware' => 'adminAuth'],function(){
     Route::post('/new-order-now', [OrderController::class,'new_order_now']);
     Route::get('/preview-order', [OrderController::class,'preview_order']);
     Route::get('/order-history', [OrderController::class,'order_history']);
+    Route::post('/confirm-transaction', [OrderController::class,'confirm_transaction']);
+
+
+
+
 
 
     //Account
@@ -199,41 +205,11 @@ Route::group(['middleware' => 'adminAuth'],function(){
 
 
 
-    Route::get('/bank-transfer', [MainController::class,'bank_transfer']);
-    Route::post('/withdraw-now', [MainController::class,'withdraw_now']);
-    Route::post('/send-other-bank', [MainController::class,'verify_account_info']);
-
-    Route::get('/confirm-account-before-sending', [MainController::class,'confirm_account_before_sending']);
-
-
-
-    Route::post('/transfer-money', [MainController::class,'transfer_money']);
-
-    Route::post('/otherbank-transfer-now', [MainController::class,'otherbank_transfer_now']);
-
-
-
-    Route::get('/send-money-phone', [MainController::class,'send_funds_with_phone_number']);
-
-    Route::post('/confirm-user-now', [MainController::class,'confirm_user_now']);
-
-    Route::post('/confirm-user', [MainController::class,'confirm_user']);
-
-    Route::post('/send-money-phone-now', [MainController::class,'send_funds_with_phone_numbe_now']);
 
 
 
 
 
-    Route::get('/buy-eletricity', [MainController::class,'buy_eletricity']);
-    Route::get('/buy-eletricity-now', [MainController::class,'buy_eletricity_now']);
-    Route::get('/verify-meter', [MainController::class,'verify_meter']);
-
-
-
-
-    Route::get('cable', [MainController::class, 'cable']);
-    Route::get('buy-cable', [MainController::class, 'buy_cable']);
 
 
 
@@ -264,35 +240,12 @@ Route::group(['middleware' => 'adminAuth'],function(){
     Route::post('verify-account-now', [MainController::class,'verify_account_now']);
     Route::get('verify-account', [MainController::class,'verify_account']);
 
-    Route::get('create-usd-card', [MainController::class,'create_usd_card']);
-    Route::post('create-usd-card-now', [MainController::class,'create_usd_card_now']);
-
-
-    Route::get('create-ngn-card', [MainController::class,'create_ngn_card']);
-    Route::post('create-ngn-card-now', [MainController::class,'create_ngn_card_now']);
-
-
-    Route::get('usd-card', [MainController::class,'usd_card_view']);
-    Route::post('fund-usd-card', [MainController::class,'fund_usd_card']);
-    Route::get('get-usd-card', [MainController::class,'get_usd_card_details']);
 
 
 
 
 
-    //Airtime & Data
 
-    Route::get('buy-airtime', [MainController::class,'buy_airtime']);
-    Route::get('buy-airtime-now', [MainController::class,'buy_airtime_now']);
-
-
-    Route::get('buy-data', [MainController::class,'buy_data']);
-    Route::get('buy-data-now', [MainController::class,'buy_data_now']);
-
-    Route::get('buy-mtn-data', [MainController::class,'buy_data_now']);
-    Route::get('buy-glo-data', [MainController::class,'buy_data_now']);
-    Route::get('buy-airtel-data', [MainController::class,'buy_data_now']);
-    Route::get('buy-9mobile-data', [MainController::class,'buy_data_now']);
 
 
 
@@ -363,109 +316,57 @@ Route::group(['middleware' => 'adminAuth'],function(){
         Route::get('/transactions', [MainController::class,'transactions']);
 
 
+        //Admin dashboard
+        Route::get('admin-dashboard', [AdminController::class, 'admin_dashboard']);
+        Route::get('order-details', [AdminController::class, 'order_details']);
+        Route::get('order-more-details', [AdminController::class, 'order_more_details']);
+        Route::get('all-orders', [AdminController::class, 'all_orders']);
+        Route::get('pending-order', [AdminController::class, 'pending_order']);
+        Route::get('completed-order', [AdminController::class, 'completed_order']);
+        Route::get('transactions', [AdminController::class, 'transactions']);
+
+        Route::post('delete-order', [AdminController::class, 'delete_order']);
+        Route::post('update-order', [AdminController::class, 'update_order']);
+        Route::post('reject-order', [AdminController::class, 'reject_order']);
+        Route::get('customer', [AdminController::class, 'customer']);
+        Route::get('owner', [AdminController::class, 'owner']);
+        Route::post('create-customer', [AdminController::class, 'create_customer']);
+        Route::post('delete-customer', [AdminController::class, 'delete_customer']);
+        Route::post('create-owner', [AdminController::class, 'create_owner']);
+        Route::post('delete-owner', [AdminController::class, 'delete_owner']);
+        Route::get('driver', [AdminController::class, 'driver']);
+        Route::get('view-driver', [AdminController::class, 'view_driver']);
+        Route::post('create-driver', [AdminController::class, 'create_driver']);
+        Route::post('delete-driver', [AdminController::class, 'delete_driverr']);
+        Route::post('update-driver', [AdminController::class, 'update_driver']);
+        Route::get('fleet', [AdminController::class, 'fleet']);
+        Route::post('create-fleet', [AdminController::class, 'create_fleet']);
 
 
 
 
 
-        Route::get('/users', [MainController::class,'users']);
-        Route::get('/customers', [MainController::class,'customers']);
-        Route::get('/agents', [MainController::class,'agents']);
-        Route::post('createUser', [MainController::class,'createUser']);
-         Route::post('/userEdit/{id}', [MainController::class,'userEdit']);
-        Route::get('/user_edit/{id}', [MainController::class,'user_edit']);
-        Route::delete('userDelete/{id}', [MainController::class,'userDelete']);
-
-        Route::get('/report', [MainController::class,'report']);
-
-        Route::get('/sorting', [MainController::class,'sorting']);
-        Route::post('sorted', [MainController::class,'sorted']);
-
-        Route::post('testsorting', [MainController::class,'testsorting']);
-
-        Route::get('viewSortingDetails/{id}', [MainController::class,  'viewsorting']);
-        Route::delete('sortedDelete/{id}', [ManageController::class,'deleteSorting']);
-        // Route::get('sortedEdit/{id}', [ManageController::class,'editSorting']);
-        // Route::post('sortedEdit/{id}', [ManageController::class,'updateSorting']);
-
-        Route::get('/sortedtransfer', [MainController::class,'sortedTransferView']);
-        Route::post('sorted_transfers', [MainController::class,'sortedTransfer']);
-        Route::delete('sortedTransferDeleted/{id}', [ManageController::class,'sortedTransferDeleted']);
-
-        Route::get('/item', [MainController::class,'itemList']);
-        Route::get('/item_edit/{id}', [MainController::class,'itemEdit']);
-        Route::post('itemEdit/{id}', [MainController::class,'itemEditUpdate']);
-        Route::post('createItem', [MainController::class,'createItem']);
-        Route::delete('itemDelete/{id}', [MainController::class,'itemDelete']);
-
-        Route::get('/manage/role', [ManageController::class,'roleList']);
-        Route::get('/manage/role_edit/{id}', [ManageController::class,'roleEdit']);
-        Route::post('roleEdit/{id}', [ManageController::class,'roleEditUpdate']);
-        Route::post('createRole', [ManageController::class,'createRole']);
-        Route::delete('roleDelete/{id}', [ManageController::class,'roleDelete']);
-
-        Route::get('/bailing', [MainController::class,'bailing']);
-        Route::post('bailed', [MainController::class,'bailed']);
-
-        Route::get('/addCollection', [MainController::class,'viewCollect']);
-        Route::get('/collectioncenter', [MainController::class,'collectionCenter']);
-        Route::post('collect', [MainController::class,'collect']);
-        Route::get('collectionsDetails/{id}', [MainController::class,  'viewcollection']);
-        Route::get('collection_center_details/{id}', [MainController::class,  'viewcollectioncenter']);
-        Route::delete('deleteCollection/{id}', [ManageController::class,'deleteCollection']);
 
 
-        Route::get('/bailing_item', [MainController::class,'bailingList']);
-        Route::post('createBailingItem', [MainController::class,'createBailingItem']);
-        Route::get('/bailing_item_edit/{id}', [MainController::class,'bailedEdit']);
-        Route::post('bailItemEdit/{id}', [MainController::class,'bailItemEditUpdate']);
-        Route::delete('bailedDelete/{id}', [ManageController::class,'deleteBailing']);
 
 
-        Route::get('/locations', [MainController::class,'locations']);
-        Route::post('createLocation', [MainController::class,'location']);
-        Route::get('factory_edit/{id}', [MainController::class,'factoryEdit']);
-        Route::post('factoryUpdate/{id}', [MainController::class,'factoryUpdate']);
-        Route::delete('factoryDelete/{id}', [MainController::class,'factoryDelete']);
 
 
-        Route::get('/factory', [MainController::class,'factory']);
-        Route::get('/viewFactory/{id}', [MainController::class,'viewfactory']);
-        Route::post('/createFactory', [MainController::class,'createFactory']);
 
-        Route::get('/transfer', [MainController::class,'transfering']);
-        Route::post('transferd', [MainController::class,'transferd']);
-        Route::delete('tranferDeleted/{id}', [ManageController::class,'deleteTransfer']);
-        Route::get('viewTransfer/{id}', [MainController::class,  'viewtransfer']);
 
-        Route::get('/recycle', [MainController::class,'recycled']);
-        Route::post('addrecycle', [MainController::class,'recycle']);
-        Route::delete('recycleDelete/{id}', [ManageController::class,'deleteRecycle']);
 
-        Route::get('/sales', [MainController::class,'salesp']);
-        Route::post('addsales', [MainController::class,'sales']);
-        Route::delete('salesDelete/{id}', [ManageController::class,'deleteSales']);
 
-        //filiter
 
-        Route::get('collectionFilter', [MainController::class,'collectionFilter']);
-        Route::get('collection_report', [MainController::class,'collection_filter']);
 
-        Route::get('sortedFilter', [MainController::class,'sortedFilter']);
-        Route::get('sorting_report', [MainController::class,'sorted_filter']);
 
-        Route::get('bailedFilter', [MainController::class,'bailedFilter']);
-        Route::get('bailed_report', [MainController::class,'bailed_filter']);
 
-        Route::get('transferFilter', [MainController::class,'transferFilter']);
-        Route::get('transfered_report', [MainController::class,'transfer_filter']);
 
-        Route::get('recycleFilter', [MainController::class,'recycleFilter']);
-        Route::get('recycled_report', [MainController::class,'recycle_filter']);
 
-        Route::get('salesFilter', [MainController::class,'salesFilter']);
-        Route::get('sales_report', [MainController::class,'sales_filter']);
-        Route::get('salesbailed_report', [MainController::class,'salesbailed_filter']);
+        // Route::get('admin-dashboard', [AdminController::class, 'admin_dashboard']);
+        // Route::get('admin-dashboard', [AdminController::class, 'admin_dashboard']);
+        // Route::get('admin-dashboard', [AdminController::class, 'admin_dashboard']);
+
+
 
 
 

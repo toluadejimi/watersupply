@@ -59,7 +59,7 @@
 
                     <div class="card">
 
-                        <form class="pt-3" action="/new-order-now" method="POST">
+                        <form class="pt-3" action="/confirm-transaction?order_id={{$order_id}}&amount={{$amount}}" method="POST">
                             @csrf
                             <div class="card-body">
 
@@ -99,11 +99,12 @@
                                 </div>
 
 
+
                             </div>
 
                             <div class="mt-8">
                                 <button a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                    name="submit" type="submit">Alredy tansfered click done</a></button>
+                                    name="submit" type="submit" >Confirm Transaction</a></button>
                             </div>
                         </form>
                     </div>

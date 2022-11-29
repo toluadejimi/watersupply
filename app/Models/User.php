@@ -79,25 +79,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function location()
-    {
-        return $this->belongsTo(Location::class);
-    }
-    public function role()
-    {
-        return $this->belongsTo(UserRole::class);
-    }
-    public function factory()
-    {
-        return $this->hasOne(Factory::class);
-    }
-    public function dropoff()
-    {
-        return $this->hasOne(DropOff::class,'user_id');
-    }
 
-    public function collect()
-    {
-        return $this->hasOne(Collection::class,'user_id');
+    public function orders(){
+        return $this->hasMany('App\Order');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Models\Order;
 use App\Models\Tank;
+use App\Models\Transaction;
 use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -172,7 +173,7 @@ class OrderController extends Controller
             $body = $res->getBody();
             $array_body = json_decode($body);
 
-            return view('preview-order', compact('date', 'f_name', 'account_name', 'account_number', 'bank_name', 'order_id', 'tank_size', 'l_name', 'tank_id', 'reoccur', 'reoccur_range', 'payment_mode', 'order_id'));
+            return view('preview-order', compact('date', 'f_name', 'order_id', 'account_name', 'account_number', 'bank_name', 'order_id', 'tank_size', 'l_name', 'tank_id', 'reoccur', 'amount','reoccur_range', 'payment_mode', 'order_id'));
 
         }
 
@@ -213,5 +214,30 @@ class OrderController extends Controller
         return view('order-history',compact('orders','f_name','l_name','delivered_order','pending_order','money_out'));
 
     }
+
+
+    public function confirm_transaction(Request $request){
+
+        $amount = $request->amount;
+        $order_id = $request->order_id;
+
+
+        $user_id = Auth::id();
+
+        $order = new Transaction();
+        $order->user_id = $user_id;
+        $order->ref_id = $order_id;
+        $order->type = 'credit';
+        $order->amount = $amount;
+        $order->save();
+
+        return redirect('user-dashboard');
+
+
+    }
+
+    
+
+
 
 }

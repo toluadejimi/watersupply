@@ -55,6 +55,18 @@
                                 @csrf
 
                                 <div class="form-group">
+                                    <label> Select Location </label>
+                                    <select name="owner" id="" class="form-control">
+                                        @forelse ($locations as $data )
+                                        <option value="{{$data->name}}">{{$data->name}}</option>
+                                        @empty
+                                        <option value="">No location Found </option>
+                                        @endforelse
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
                                     <input type="text" required name="apt"  class="form-control form-control-lg" id="exampleInputEmail1"
                                         placeholder="Enter Apt | NO | Suit">
                                 </div>
@@ -66,21 +78,12 @@
                                 </div>
 
 
-                                <div class="form-group">
-                                    <input type="text" required name="city" required class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Enter City">
-                                </div>
+                                
 
 
-                                <div class="form-group">
-                                    <input type="text" required name="lga" required class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Enter LGA">
-                                </div>
 
-                                <div class="form-group">
-                                    <input type="text" required name="state" required class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Enter State" value="LAGOS STATE">
-                                </div>
+
+
 
                                 <div class="mt-3">
                                     <button a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"

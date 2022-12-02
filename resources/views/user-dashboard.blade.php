@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <h3 class="font-weight-bold">Welcome {{ $f_name }} {{ $l_name }}</h3>
-                            <h6 class="font-weight-normal mb-0">What will like to do today <span class="text-primary"></span>
+                            <h6 class="font-weight-normal mb-0">What would like to do today? <span class="text-primary"></span>
                             </h6>
                         </div>
 
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="col-md-6 mb-4 stretch-card transparent">
                             <div class="card card-tale">
                                 <div class="card-body">

@@ -58,7 +58,7 @@ class AuthController extends Controller
 
             }
 
-        }return back()->with('error', 'Incorrect Credientials');
+        }return back()->with('error', 'Incorrect Credentials');
 
     }
 

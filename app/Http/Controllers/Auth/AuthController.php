@@ -209,18 +209,14 @@ class AuthController extends Controller
     {
 
         $apt = $request->apt;
-        $lga = $request->lgg;
-        $city = $request->city;
-        $state = $request->state;
         $street = $request->street;
+        $location = $request->location;
 
         $update = User::where('id', Auth::id())
             ->update([
 
                 'apt' => $apt,
-                'lga' => $lga,
-                'city' => $city,
-                'state' => $state,
+                'location' => $locaton,
                 'street' => $street,
 
             ]);

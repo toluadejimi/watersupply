@@ -56,7 +56,7 @@
 
                                 <div class="form-group">
                                     <label> Select Location </label>
-                                    <select name="owner" id="" class="form-control">
+                                    <select name="location" id="" class="form-control">
                                         @forelse ($locations as $data )
                                         <option value="{{$data->name}}">{{$data->name}}</option>
                                         @empty
@@ -78,7 +78,7 @@
                                 </div>
 
 
-                                
+
 
 
 

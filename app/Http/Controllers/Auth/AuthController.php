@@ -216,7 +216,7 @@ class AuthController extends Controller
             ->update([
 
                 'apt' => $apt,
-                'location' => $locaton,
+                'location' => $location,
                 'street' => $street,
 
             ]);

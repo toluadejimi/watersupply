@@ -54,11 +54,11 @@ class MainController extends Controller
 
         $var = json_decode($var);
 
-        $main_weather = $var->weather['0']->main;
+        $main_weather = $var->weather['0']->main ?? 27;
 
-        $description = $var->weather['0']->description;
+        $description = $var->weather['0']->description ?? 0;
 
-        $get_temp = $var->main->temp;
+        $get_temp = $var->main->temp ?? 310;
 
         $temp = $get_temp - 273.15;
 

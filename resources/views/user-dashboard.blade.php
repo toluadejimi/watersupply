@@ -53,6 +53,54 @@
                                 <div class="card-body">
                                     <p class="mb-4">Order</p>
                                     <p class="fs-30 mb-3">{{$total_order}}</p>
+
+
+
+
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title btn-fw text-dark" id="staticBackdropLabel" >How would you like to order?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+
+                                            <div class="modal-body mt-3 mr-3">
+                                                <button type="button" class="btn btn-info mb-3 mr-2 ml-4" >Order to my location</button>
+                                                <button type="button" class="btn btn-primary mb-3">Order another location</button>
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Launch demo modal
+                                      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <a button type="button" href="new-order" class="btn btn-inverse-secondary btn-fw text-white">Make an Order</button> </a>
 
                                 </div>
@@ -186,4 +234,14 @@
                 </div>
             </div>
         </div>
+
+        <script>
+
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+        </script>
     @endsection

@@ -7,17 +7,9 @@ use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-//Clear Cache facade value:
+use App\Http\Controllers\PaymentController;
+
+
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     return '<h1>Cache facade value cleared</h1>';
@@ -59,8 +51,12 @@ Route::get('/', function () {
 
 
 
+// Route::post('/funding', [MainController::class,'funding'])->name('funding');
 
+// Route::post('/pay', 'MainController@redirectToGateway')->name('pay');
+Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
 
+Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment');
 
 
 
@@ -72,8 +68,6 @@ Route::get('forgot-password', [MainController::class, 'forgot_password']);
 Route::get('reset-password', [MainController::class, 'reset_passsword']);
 Route::get('set-password', [MainController::class, 'set_password']);
 Route::post('set-now', [MainController::class, 'set_now']);
-
-
 
 
 

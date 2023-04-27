@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'be48664347f1a12a4e37b33e456d7c8c58371e0b',
+        'reference' => 'a4178a3cf054aa633e45062eecc4652f5e11eb9b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -403,7 +403,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'be48664347f1a12a4e37b33e456d7c8c58371e0b',
+            'reference' => 'a4178a3cf054aa633e45062eecc4652f5e11eb9b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1424,6 +1424,15 @@
             'aliases' => array(
                 0 => '1.0.x-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'unicodeveloper/laravel-paystack' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => '4c50abd6902463c7688a51efaef3c2a2147f6860',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../unicodeveloper/laravel-paystack',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(

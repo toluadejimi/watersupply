@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+
+
 
 
     ],
@@ -214,6 +217,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTAuthFactory' => Tymon\JWTAuth\Facades\JWTAuthFactory::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+
 
     ])->toArray(),
 

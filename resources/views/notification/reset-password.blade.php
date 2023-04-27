@@ -69,11 +69,21 @@
 								<h1
 									style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;">
 									Hi {{$f_name}}</h1>
-								<p style="margin:0;">This is to inform you that your order <br>
-								<h5>Order ID - {{$order_id}} </h5> <br>
-                                <p style="margin:0;">has been created successfully <br>
+								<p style="margin:0;">Click the button below to reset your password <br>
 
 								</p>
+
+								<p style="margin:0;"><a href="{{$link}}
+									style="background: #284ef8; text-decoration: none; padding: 10px 25px; color: #ffffff; border-radius: 4px; display:inline-block; mso-padding-alt:0;text-underline-color:#ff3884">
+									<!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%;mso-text-raise:20pt">&nbsp;</i><![endif]--><span
+										style="mso-text-raise:10pt;font-weight:bold;">Reset your password</span>
+									<!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%">&nbsp;</i><![endif]-->
+								</a></p><br>
+                                <br>
+
+                                <p> If you didn't request for reset password link, you can ignore this email </p>
+
+
 							</td>
 						</tr>
 
@@ -95,3 +105,7 @@
 </body>
 
 </html>
+
+
+
+

@@ -5,15 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\User;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
-use Illuminate\Support\Facades\Validator;
-use Exception;
-
-
-
+use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -88,35 +82,30 @@ class MainController extends Controller
         $l_name = User::where('id', Auth::id())
             ->first()->l_name;
 
-
         $gender = User::where('id', Auth::id())
-        ->first()->gender;
+            ->first()->gender;
 
         $phone = User::where('id', Auth::id())
-        ->first()->phone;
+            ->first()->phone;
 
         $email = User::where('id', Auth::id())
-        ->first()->email;
+            ->first()->email;
 
         $apt = User::where('id', Auth::id())
-        ->first()->apt;
+            ->first()->apt;
 
         $street = User::where('id', Auth::id())
-        ->first()->street;
+            ->first()->street;
 
         $lga = User::where('id', Auth::id())
-        ->first()->lga;
+            ->first()->lga;
 
         $state = User::where('id', Auth::id())
-        ->first()->state;
+            ->first()->state;
 
-
-
-
-        return view('my-account', compact('f_name','apt','street','lga','state','phone', 'l_name','email', 'gender'));
+        return view('my-account', compact('f_name', 'apt', 'street', 'lga', 'state', 'phone', 'l_name', 'email', 'gender'));
 
     }
-
 
     public function update_account(Request $request)
     {
@@ -127,21 +116,17 @@ class MainController extends Controller
         $gender = $request->gender;
 
         $update = User::where('id', Auth::id())
-        ->update([
+            ->update([
 
-            'f_name' => $f_name,
-            'l_name' => $l_name,
-            'phone' => $phone,
-            'gender' => $gender
-        ]);
+                'f_name' => $f_name,
+                'l_name' => $l_name,
+                'phone' => $phone,
+                'gender' => $gender,
+            ]);
 
         return back()->with('message', 'Your information was updated successfully');
 
-
-
-
     }
-
 
     public function update_info(Request $request)
     {
@@ -151,20 +136,16 @@ class MainController extends Controller
         $lga = $request->lga;
 
         $update = User::where('id', Auth::id())
-        ->update([
+            ->update([
 
-            'apt' => $apt,
-            'street' => $street,
-            'lga' => $lga,
-        ]);
+                'apt' => $apt,
+                'street' => $street,
+                'lga' => $lga,
+            ]);
 
         return back()->with('message', 'Your information was updated successfully');
 
-
-
-
     }
-
 
     public function update_email(Request $request)
     {
@@ -172,16 +153,15 @@ class MainController extends Controller
         $email = $request->email;
 
         $update = User::where('id', Auth::id())
-        ->update([
+            ->update([
 
-            'email' => $email,
+                'email' => $email,
 
-        ]);
+            ]);
 
         return back()->with('message', 'Your Email has been updated successfully');
 
     }
-
 
     public function update_password(Request $request)
     {
@@ -191,43 +171,33 @@ class MainController extends Controller
             'password' => ['required', 'confirmed'],
         ]);
 
-
         $old_password = $request->old_password;
         $new_password = $request->password;
         $password_confirmation = $request->password_confirmation;
 
-
         $user_password = User::where('id', Auth::id())
-        ->first()->password;
+            ->first()->password;
 
         $user_id = Auth::id();
 
+        if ((Hash::check(request('old_password'), $user_password)) == false) {
+            return back()->with('error', 'Check your old password');
+        } else if ((Hash::check(request('password'), $user_password)) == true) {
+            return back()->with('error', 'Please enter a password which is not similar then current password');
+        } else {
+            User::where('id', $user_id)->update([
+                'password' => Hash::make($new_password),
+            ]);
 
-
-
-
-
-
-                if ((Hash::check(request('old_password'), $user_password)) == false) {
-                    return back()->with('error', 'Check your old password');
-                } else if ((Hash::check(request('password'), $user_password)) == true) {
-                    return back()->with('error', 'Please enter a password which is not similar then current password');
-                } else {
-                    User::where('id', $user_id)->update([
-                        'password' => Hash::make($new_password)
-                    ]);
-
-                    return redirect('/welcome')->with('message', 'Password Updated Successfully, Please Login to continue');
-                }
-
+            return redirect('/welcome')->with('message', 'Password Updated Successfully, Please Login to continue');
+        }
 
     }
-
 
     public function secutiry()
     {
         $email = User::where('id', Auth::id())
-        ->first()->email;
+            ->first()->email;
 
         $f_name = User::where('id', Auth::id())
             ->first()->f_name;
@@ -235,11 +205,70 @@ class MainController extends Controller
         $l_name = User::where('id', Auth::id())
             ->first()->l_name;
 
-
-        return view('security', compact('email', 'f_name','l_name'));
+        return view('security', compact('email', 'f_name', 'l_name'));
     }
 
+    public function forgot_password()
+    {
+
+        return view('forgot-password');
+
+    }
+
+    public function reset_password(request $request)
+    {
+
+        $email = $request->email;
 
 
+        $check_email = User::where('email', $email)
+            ->first()->email ?? null;
+
+
+        $f_name = User::where('email', $email)
+            ->first()->f_name ?? null;
+
+        if ($check_email == null) {
+            return back()->with('error', 'Account does not exist');
+        }
+
+        if ($email == $check_email) {
+
+            $link = url('') . "/set-password?email=$email";
+
+            $api_key = env('ELASTIC_API');
+            $from = env('FROM_API');
+            $app_name = env('APP_NAME');
+
+            $client = new Client([
+                'base_uri' => 'https://api.elasticemail.com',
+            ]);
+
+            $res = $client->request('GET', '/v2/email/send', [
+                'query' => [
+
+                    'apikey' => "$api_key",
+                    'from' => "$from",
+                    'fromName' => $app_name,
+                    'sender' => "$from",
+                    'senderName' => $app_name,
+                    'subject' => 'Reset Password',
+                    'to' => "$email",
+                    'bodyHtml' => view('notification.reset-password', compact('link', 'f_name', 'app_name'))->render(),
+                    'encodingType' => 0,
+
+                ],
+            ]);
+
+            $body = $res->getBody();
+            $array_body = json_decode($body);
+
+            return view('success');
+
+        }
+
+        return view('forgot-password');
+
+    }
 
 }

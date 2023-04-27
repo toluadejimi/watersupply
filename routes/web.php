@@ -69,6 +69,13 @@ Route::get('/welcome', [AuthController::class,'login_view']);
 
 
 Route::get('forgot-password', [MainController::class, 'forgot_password']);
+Route::get('reset-password', [MainController::class, 'reset_passsword']);
+Route::get('set-password', [MainController::class, 'set_password']);
+Route::post('set-now', [MainController::class, 'set_now']);
+
+
+
+
 
 Route::post('forgot-password-now', [MainController::class, 'forgot_password_send_code']);
 

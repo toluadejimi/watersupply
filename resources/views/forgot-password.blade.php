@@ -51,31 +51,22 @@
                             {{ session()->get('error') }}
                         </div>
                     @endif
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3" action="/signin" method="POST">
+                             <h4>Reset Password</h4>
+                            <h6 class="font-weight-light">Enter your registred email</h6>
+
+                            <form class="pt-3" action="/reset-password" method="GET">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" required class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Email">
+                                    <input type="email"  name="email" required class="form-control form-control-lg" id="exampleInputEmail1"
+                                        placeholder="Enter your registred email">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password"  name="password" required class="form-control form-control-lg"
-                                        id="exampleInputPassword1" placeholder="Password">
-                                </div>
+
                                 <div class="mt-3">
                                     <button a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                                     name="submit" type="submit" >Continue</a></button>
                                 </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-
-                                    <a href="/forgot-password" class="auth-link text-black">Forgot password?</a>
-                                </div>
-
-                                <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="/register" class="text-primary">Create</a>
-                                </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

@@ -124,7 +124,7 @@
 
 
                                                     <div class="row">
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-6 mb-2">
                                                             <button class="btn btn-primary btn-lg btn-block"
                                                                 type="submit" value="Pay Now!">
 
@@ -132,7 +132,7 @@
                                                                 Now!</button>
                                                         </div>
 
-                                                        <div class="col-lg-6 mt-2">
+                                                        <div class="col-lg-6">
                                                             <a button href="fund-history"
                                                                 class="btn btn-secondary btn-lg btn-block">Fund
                                                                 History</button></a>

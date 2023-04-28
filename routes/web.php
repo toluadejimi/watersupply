@@ -179,7 +179,7 @@ Route::group(['middleware' => 'adminAuth'],function(){
     Route::get('/preview-order', [OrderController::class,'preview_order']);
 
 
-    //Route::get('/wallet-preview-order', [OrderController::class,'preview_order']);
+    Route::get('/wallet-preview-order', [OrderController::class,'preview_order']);
     Route::post('/wallet-confirm-transaction', [OrderController::class,'wallet_confirmation']);
 
 

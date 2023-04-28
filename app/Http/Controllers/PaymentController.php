@@ -46,7 +46,7 @@ class PaymentController extends Controller
         $amount_in_kobo = $check['data']['amount'];
         $amount_in_naira = $amount_in_kobo / 100;
 
-            $credit = Auth::user()->wallet + $amount_in_naira;
+        $credit = Auth::user()->wallet + $amount_in_naira;
 
             $transaction = new Transaction();
             $transaction->ref_trans_id = "FUN"."-".Str::random(10);
@@ -92,7 +92,7 @@ class PaymentController extends Controller
 
             return back()->with('message', "Congratulations your wallet has been successfully funded with NGN" . " " . number_format($amount_in_naira));
 
-        
+
 
     }
 

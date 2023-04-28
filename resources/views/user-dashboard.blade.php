@@ -131,7 +131,8 @@
                                                                 <i class="fa fa-plus-circle fa-lg"></i> Pay
                                                                 Now!</button>
                                                         </div>
-                                                        <div class="col-lg-6">
+
+                                                        <div class="col-lg-6 mt-2">
                                                             <a button href="fund-history"
                                                                 class="btn btn-secondary btn-lg btn-block">Fund
                                                                 History</button></a>

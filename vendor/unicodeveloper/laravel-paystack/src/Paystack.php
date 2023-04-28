@@ -115,7 +115,7 @@ class Paystack
 
             $quantity = intval(request()->quantity ?? 1);
 
-            $call_back = url('')."/payment/callback";
+            //$call_back = url('')."/payment/callback";
 
             $data = array_filter([
                 "amount" => intval(request()->amount*100) * $quantity,
@@ -124,7 +124,7 @@ class Paystack
                 "plan" => request()->plan,
                 "first_name" => request()->first_name,
                 "last_name" => request()->last_name,
-                "callback_url" => $call_back,
+                "callback_url" => request()->callback_url,
                 "currency" => (request()->currency != ""  ? request()->currency : "NGN"),
 
                 /*

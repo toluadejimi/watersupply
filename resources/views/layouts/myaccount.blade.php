@@ -29,9 +29,9 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                <a class="navbar-brand brand-logo mr-5" href="user-dashboard"><img
                         src="{{ url('') }}/public/images/logo.svg" class="mr-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                <a class="navbar-brand brand-logo-mini" href="user-dashboard"><img
                         src="{{ url('') }}/public/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -60,9 +60,10 @@
                         </div>
                     </li>
 
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                        data-toggle="offcanvas">
                         <span class="icon-menu"></span>
-                      </button>
+                    </button>
 
                 </ul>
 
@@ -110,8 +111,7 @@
                         <div class="add-items d-flex px-3 mb-0">
                             <form class="form w-100">
                                 <div class="form-group d-flex">
-                                    <input type="text" class="form-control todo-list-input"
-                                        placeholder="Add To-do">
+                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
                                     <button type="submit" class="add btn btn-primary todo-list-add-btn"
                                         id="add-task">Add</button>
                                 </div>
@@ -276,6 +276,8 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/new-order">New Order</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/order-history">Order History</a>
+                                <li class="nav-item"> <a class="nav-link" href="/fund-history">Fund History</a>
+
                                 </li>
                             </ul>
                         </div>

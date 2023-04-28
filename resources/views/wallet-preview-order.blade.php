@@ -59,7 +59,7 @@
 
                     <div class="card">
 
-                        <form class="pt-3" action="/confirm-transaction?order_id={{$order_id}}&amount={{$amount}}" method="POST">
+                        <form class="pt-3" action="/wallet-confirm-transaction?order_id={{$order_id}}&amount={{$amount}}" method="POST">
                             @csrf
                             <div class="card-body">
 
@@ -68,11 +68,13 @@
                                 <div class="form-group">
                                     <label>DELIVERY DATE</label>
                                     <h6>{{$date}}</h6>
+                                    <input type="text" value="{{$date}}" name="date" hidden>
                                 </div>
 
                                 <div class="form-group">
                                     <label>TANK INFORMATION</label>
                                     <h6>{{$tank_size}}</h6>
+                                    <input type="text" name="tank_size" value="{{$tank_size}}" hidden>
                                 </div>
 
                                 <div class="form-group">
@@ -82,11 +84,15 @@
                                     @elseif ($reoccur == 0)
                                     <h6>No</h6>
                                     @endif
+                                    <input type="text" name="reoccur" value="{{$reoccur}}" hidden>
+
                                 </div>
 
                                 <div class="form-group">
                                     <label>OCCURENCE RANGE</label>
                                     <h6>{{$reoccur_range}} Days </h6>
+                                    <input type="text" name="reoccur_range" value="{{$reoccur_range}}" hidden>
+
                                 </div>
 
                                 <div class="form-group">
@@ -96,6 +102,8 @@
                                     @elseif ($payment_mode == 'wallet')
                                     <h6>Wallet</h6>
                                     @endif
+                                    <input type="text" name="payment_mode" value="{{$payment_mode}}" hidden>
+
                                 </div>
 
 
@@ -112,44 +120,7 @@
 
 
 
-                <div class="col-md-6 grid-margin">
 
-                    <div class="card">
-
-
-                        <form class="pt-3" action="/new-order-now" method="POST">
-                            @csrf
-                            <div class="card-body">
-
-                                <h4 class="card-title">Bank Infomation</h4>
-
-                                <div class="form-group">
-                                    <label>ACCOUNT NAME</label>
-                                    <h6>{{$account_name}}</h6>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>BANK NAME</label>
-                                    <h6>{{$bank_name}}</h6>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>ACCOUNT NUMBER</label>
-                                    <h6>{{$account_number}}</h6>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>PAYMENT REFERENCE</label>
-                                    <h6>{{$order_id}}</h6>
-                                </div>
-
-
-                            </div>
-
-
-                        </form>
-                    </div>
-                </div>
 
 
             </div>

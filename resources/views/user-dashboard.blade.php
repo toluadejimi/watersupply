@@ -66,37 +66,9 @@
                                 <p class="fs-30 mb-3">{{$total_order}}</p>
 
 
-
-
-
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title btn-fw text-dark" id="staticBackdropLabel">How
-                                                    would you like to order?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-
-                                            <div class="modal-body mt-3 mr-3">
-                                                <a button type="button" href="new-order"
-                                                    class="btn btn-info mb-3 mr-2 ml-4">Order to my
-                                                    location</button></a>
-                                                <a button type="button" href="new-location-order"
-                                                    class="btn btn-primary mb-3">Order another location</button></a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <a button type="button" href="new-order" class="btn btn-primary" >
                                     Make an order
-                                </button>
+                                </button></a>
 
                             </div>
                         </div>
@@ -107,13 +79,14 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">My Wallet</p>
-                                <p class="fs-30 mb-4">NGN {{$wallet}}</p>
+                                <p class="fs-30 mb-4">NGN {{number_format(Auth::user()->wallet)}}</p>
 
                                 <div class="modal fade" id="pay" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
+
                                                 <h5 class="modal-title btn-fw text-dark" id="staticBackdropLabel">Fund
                                                     your Wallet</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -126,21 +99,22 @@
 
                                                 <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8">
 
+                                                    <div class="form-group col-lg-8">
+                                                        <h5 class="mb-2 text-dark">Enter Amount to Fund(NGN)</h5>
+                                                        <input type="number" required
+                                                            class="form-control form-control-lg mt-3" name="amount"
+                                                            id="exampleInputPassword1" placeholder="200">
+                                                    </div>
 
-                                                    <input type="hidden" name="metadata"
-                                                        value="{{ json_encode($array = ['invoiceId' => $fee->id ?? "
-                                                        74746646533"]) }}">
+
 
 
                                                     <input type="hidden" name="email" value="{{Auth::user()->email}}">
                                                     {{--
                                                     required --}}
 
-                                                    <input type="hidden" name="orderID" value="345">
 
 
-                                                    <input type="hidden" name="amount" value="1000"> {{--
-                                                    required in kobo --}}
 
                                                     <input type="hidden" name="currency" value="NGN">
 
@@ -149,10 +123,26 @@
                                                     {{ csrf_field() }}
 
 
-                                                    <button class="btn btn-success btn-lg btn-block" type="submit"
-                                                        value="Pay Now!">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <button class="btn btn-primary btn-lg btn-block"
+                                                                type="submit" value="Pay Now!">
 
-                                                        <i class="fa fa-plus-circle fa-lg"></i> Pay Now!</button>
+                                                                <i class="fa fa-plus-circle fa-lg"></i> Pay
+                                                                Now!</button>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <a button href="fund-history"
+                                                                class="btn btn-secondary btn-lg btn-block">Fund
+                                                                History</button></a>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
                                                 </form>
 
                                             </div>

@@ -70,6 +70,9 @@ Route::get('set-password', [MainController::class, 'set_password']);
 Route::post('set-now', [MainController::class, 'set_now']);
 
 
+Route::get('fund-history', [PaymentController::class, 'funding']);
+
+
 
 Route::post('forgot-password-now', [MainController::class, 'forgot_password_send_code']);
 
@@ -174,6 +177,13 @@ Route::group(['middleware' => 'adminAuth'],function(){
     Route::get('/new-order', [OrderController::class,'new_order']);
     Route::post('/new-order-now', [OrderController::class,'new_order_now']);
     Route::get('/preview-order', [OrderController::class,'preview_order']);
+
+
+    //Route::get('/wallet-preview-order', [OrderController::class,'preview_order']);
+    Route::post('/wallet-confirm-transaction', [OrderController::class,'wallet_confirmation']);
+
+
+
     Route::get('/order-history', [OrderController::class,'order_history']);
     Route::post('/confirm-transaction', [OrderController::class,'confirm_transaction']);
 

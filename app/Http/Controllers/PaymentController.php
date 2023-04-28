@@ -46,53 +46,54 @@ class PaymentController extends Controller
         $amount_in_kobo = $check['data']['amount'];
         $amount_in_naira = $amount_in_kobo / 100;
 
-        $credit = Auth::user()->wallet + $amount_in_naira;
-
-
-        $transaction = new Transaction();
-        $transaction->ref_trans_id = "FUN"."-".Str::random(10);
-        $transaction->user_id = Auth::id();
-        $transaction->type = "Funding";
-        $transaction->status = 1;
-        $transaction->balance = $credit;
-        $transaction->amount = $amount_in_naira;
-        $transaction->note = "Paystack Funding | NGN $amount_in_naira ";
-        $transaction->save();
 
 
         if ($status == 'true') {
 
-            $update = User::where('id', Auth::id())
-                ->update(['wallet' => $credit]);
 
-            $api_key = env('ELASTIC_API');
-            $from = env('FROM_API');
-            $app_name = env('APP_NAME');
+            $credit = Auth::user()->wallet + $amount_in_naira;
 
-            $email = User::where('id', Auth::id())->first()->email;
-            $l_name = User::where('id', Auth::id())->first()->l_name;
-            $f_name = User::where('id', Auth::id())->first()->f_name;
+            $transaction = new Transaction();
+            $transaction->ref_trans_id = "FUN"."-".Str::random(10);
+            $transaction->user_id = Auth::id();
+            $transaction->type = "Funding";
+            $transaction->status = 1;
+            $transaction->balance = $credit;
+            $transaction->amount = $amount_in_naira;
+            $transaction->note = "Paystack Funding | NGN $amount_in_naira ";
+            $transaction->save();
 
-            $client = new Client([
-                'base_uri' => 'https://api.elasticemail.com',
-            ]);
+            // $update = User::where('id', Auth::id())
+            //     ->update(['wallet' => $credit]);
 
-            // The response to get
-            $res = $client->request('GET', '/v2/email/send', [
-                'query' => [
+            // $api_key = env('ELASTIC_API');
+            // $from = env('FROM_API');
+            // $app_name = env('APP_NAME');
 
-                    'apikey' => "$api_key",
-                    'from' => "$from",
-                    'fromName' => $app_name,
-                    'sender' => "$from",
-                    'senderName' => $app_name,
-                    'subject' => 'Wallet Funding',
-                    'to' => "$email",
-                    'bodyHtml' => view('notification.fund', compact('f_name', 'amount_in_naira'))->render(),
-                    'encodingType' => 0,
+            // $email = User::where('id', Auth::id())->first()->email;
+            // $l_name = User::where('id', Auth::id())->first()->l_name;
+            // $f_name = User::where('id', Auth::id())->first()->f_name;
 
-                ],
-            ]);
+            // $client = new Client([
+            //     'base_uri' => 'https://api.elasticemail.com',
+            // ]);
+
+            // // The response to get
+            // $res = $client->request('GET', '/v2/email/send', [
+            //     'query' => [
+
+            //         'apikey' => "$api_key",
+            //         'from' => "$from",
+            //         'fromName' => $app_name,
+            //         'sender' => "$from",
+            //         'senderName' => $app_name,
+            //         'subject' => 'Wallet Funding',
+            //         'to' => "$email",
+            //         'bodyHtml' => view('notification.fund', compact('f_name', 'amount_in_naira'))->render(),
+            //         'encodingType' => 0,
+
+            //     ],
+            // ]);
 
             return back()->with('message', "Congratulations your wallet has been successfully funded with NGN" . " " . number_format($amount_in_naira));
 

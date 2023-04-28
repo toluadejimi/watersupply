@@ -43,13 +43,28 @@ class PaymentController extends Controller
         $check = Paystack::getPaymentData($ref);
 
         //$status = $check['status'];
-        $amount_in_kobo = $check['data']['amount'];
+        $amount_in_kobo = $check['data']['requested_amount'];
+
         $amount_in_naira = $amount_in_kobo / 100;
 
-        $credit = Auth::user()->wallet + $amount_in_naira;
+        $wallet = User::where('id', Auth::id())
+        ->first()->wallet;
+
+        $chk_ref = Transaction::where('ref_trans_id', $ref)
+        ->first()->ref_trans_id ?? null;
+
+        if($chk_ref == $ref){
+            return back()->with('error', "Transaction has successfully  been funded, Create a new funding");
+        }
+
+
+        $credit = $wallet + $amount_in_naira;
+
+        $update = User::where('id', Auth::id())
+        ->update(['wallet' => $credit]);
 
             $transaction = new Transaction();
-            $transaction->ref_trans_id = "FUN"."-".Str::random(10);
+            $transaction->ref_trans_id = $ref;
             $transaction->user_id = Auth::id();
             $transaction->type = "Funding";
             $transaction->status = 1;
@@ -60,7 +75,8 @@ class PaymentController extends Controller
 
 
 
-    return back()->with('message', "Congratulations your wallet has been successfully funded with NGN" . " " . number_format($amount_in_naira));
+
+    return redirect('fund-history')->with('message', "Congratulations your wallet has been successfully funded with NGN" . " " . number_format($amount_in_naira));
 
 
 

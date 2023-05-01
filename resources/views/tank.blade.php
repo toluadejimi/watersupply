@@ -52,7 +52,7 @@
 
                             <h4>Water Tank Information</h4>
                             <h6 class="font-weight-light">Set your water tank information</h6>
-                            <form class="pt-3" action="/tank-info" method="GET">
+                            <form class="pt-3" action="/tank-info" method="POST">
                                 @csrf
 
                                 <div class="form-group">

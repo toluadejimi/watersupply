@@ -220,8 +220,20 @@ class MainController extends Controller
 
         $email = $request->email;
 
+
+        return view('set-password', compact('email'));
+
+
+    }
+
+
+    public function set_password_now(request $request)
+    {
+
+        $email = $request->email;
+
         $input = $request->validate([
-            'password' => ['required', 'confirmed', 'int'],
+            'password' => ['required', 'confirmed'],
         ]);
 
         $password = Hash::make($request->password);
@@ -235,10 +247,10 @@ class MainController extends Controller
         }
 
         $update_password = User::where('email', $email)
-            ->update(['pin' => $password]);
+            ->update(['password' => $password]);
 
 
-            return redirect('user-dashboard')->with('message', "Welcome Back");
+        return redirect('user-dashboard')->with('message', "Welcome Back");
 
 
     }

@@ -52,7 +52,7 @@
                             </div>
                             <h4>Reset Password</h4>
                             <h6 class="font-weight-light">Choose a new password</h6>
-                            <form class="pt-3" action="/set-now" method="POST">
+                            <form class="pt-3" action="/set-password-now" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <input type="password"  name="password" required class="form-control form-control-lg" id="exampleInputEmail1"

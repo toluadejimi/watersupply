@@ -59,6 +59,9 @@
                                         placeholder="Enter your password">
                                 </div>
 
+                                <input name="email" value="{{$email}}" hidden>
+
+
                                 <div class="form-group">
                                     <input type="password"  name="password_confirmation" required class="form-control form-control-lg" id="exampleInputEmail1"
                                         placeholder="Confirm your password">

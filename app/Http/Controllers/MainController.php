@@ -265,10 +265,10 @@ class MainController extends Controller
             ->update(['password' => $password]);
 
 
-        
 
 
-        return redirect('welcome')->with('message', "Welcome Back");
+
+        return redirect('welcome')->with('message', "Password Resest Successfully, Please login to continue");
 
 
     }

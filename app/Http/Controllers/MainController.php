@@ -215,15 +215,41 @@ class MainController extends Controller
 
     }
 
+    public function set_password(request $request)
+    {
+
+        $email = $request->email;
+
+        $input = $request->validate([
+            'password' => ['required', 'confirmed', 'int'],
+        ]);
+
+        $password = Hash::make($request->password);
+
+        $check_email = User::where('email', $email)->first() ?? null;
+
+        if ($check_email == null) {
+
+            return back()->with('error', 'User not found');
+
+        }
+
+        $update_password = User::where('email', $email)
+            ->update(['pin' => $password]);
+
+
+            return redirect('user-dashboard')->with('message', "Welcome Back");
+
+
+    }
+
     public function reset_password(request $request)
     {
 
         $email = $request->email;
 
-
         $check_email = User::where('email', $email)
             ->first()->email ?? null;
-
 
         $f_name = User::where('email', $email)
             ->first()->f_name ?? null;

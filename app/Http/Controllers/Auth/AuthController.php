@@ -120,7 +120,7 @@ class AuthController extends Controller
         $body = $res->getBody();
         $array_body = json_decode($body);
 
-        return redirect('welcome')->with('message', 'Your account has been successfully created');
+        return redirect('verify-email-code')->with('message', 'Enter the verification code sent to your email provided');
 
     }
 

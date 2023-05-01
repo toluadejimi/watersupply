@@ -249,7 +249,7 @@ class MainController extends Controller
 
           $new_email = extract_emails_from($get_email);
 
-          $f_email = implode("\n", $new_emails);
+          $f_email = implode("\n", $new_email);
 
 
         $check_email = User::where('email', $f_email)->first() ?? null;
@@ -265,7 +265,10 @@ class MainController extends Controller
             ->update(['password' => $password]);
 
 
-        return redirect('user-dashboard')->with('message', "Welcome Back");
+        
+
+
+        return redirect('welcome')->with('message', "Welcome Back");
 
 
     }

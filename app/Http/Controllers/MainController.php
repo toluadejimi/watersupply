@@ -220,7 +220,7 @@ class MainController extends Controller
 
         $email = $request->email;
 
-        
+
 
         return view('set-password', compact('email'));
 
@@ -239,9 +239,21 @@ class MainController extends Controller
 
         $password = Hash::make($request->password);
 
-        $check_email = User::where('email', $email)->first() ?? null;
 
-        dd($email);
+        function extract_emails_from($string){
+            preg_match_all("/[\._a-zA-Z0-9-]+@[\._a-zA-Z0-9-]+/i", $string, $matches);
+            return $matches[0];
+          }
+
+          $get_email = $email;
+
+          $new_email = extract_emails_from($get_email);
+
+          $f_email = implode("\n", $new_emails);
+
+
+        $check_email = User::where('email', $f_email)->first() ?? null;
+
 
         if ($check_email == null) {
 

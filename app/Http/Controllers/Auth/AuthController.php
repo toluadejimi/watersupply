@@ -143,18 +143,17 @@ class AuthController extends Controller
 
         $code = $request->code;
 
-        $email = User::where('id', Auth::id())
-            ->first()->email;
+        $email = $request->email;
 
-        $f_name = User::where('id', Auth::id())
-            ->first()->f_name;
+        $f_name = User::where('email',$email)
+        ->first()->f_name;
 
-        $email_code = User::where('id', Auth::id())
-            ->first()->email_code;
+        $email_code = User::where('email', $email)
+        ->first()->email_code;
 
         if ($code == $email_code) {
 
-            $update = User::where('id', Auth::id())
+            $update = User::where('email', $email)
                 ->update(['is_email_verified' => 1]);
 
             $client = new Client([

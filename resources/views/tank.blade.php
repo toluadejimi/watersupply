@@ -62,6 +62,11 @@
                                 </div>
 
 
+                                <input name="email" value="{{$email}}" hidden>
+
+                                <input name="password" value="{{$password}}" hidden>
+
+
                                 <div class="mt-3">
                                     <button a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                                     name="submit" type="submit" >Continue</a></button>

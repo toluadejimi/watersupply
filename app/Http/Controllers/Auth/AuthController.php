@@ -121,7 +121,7 @@ class AuthController extends Controller
         $body = $res->getBody();
         $array_body = json_decode($body);
 
-        return view('verify-email-code', compact('user_email'))->with('message', 'Enter the verification code sent to your email provided');
+        return view('verify-email-code', compact('user_email', 'password'));
 
     }
 
@@ -144,6 +144,8 @@ class AuthController extends Controller
         $code = $request->code;
 
         $email = $request->email;
+
+        $password = $request->password;
 
         $f_name = User::where('email',$email)
         ->first()->f_name;
@@ -180,7 +182,7 @@ class AuthController extends Controller
             $body = $res->getBody();
             $array_body = json_decode($body);
 
-            return redirect('location-information')->with('message', 'Your email has been verified');
+            return view('location-information', compact('email', 'password'))->with('message', 'Your email has been verified');
 
         }
 
@@ -211,8 +213,10 @@ class AuthController extends Controller
         $apt = $request->apt;
         $street = $request->street;
         $location = $request->location;
+        $email = $request->email;
+        $password = $request->password;
 
-        $update = User::where('id', Auth::id())
+        $update = User::where('email', $email)
             ->update([
 
                 'apt' => $apt,
@@ -221,7 +225,7 @@ class AuthController extends Controller
 
             ]);
 
-        return redirect('tank')->with('message', 'Your Location as been successfully submitted');
+        return view('tank', compact('email', 'password'))->with('message', 'Your Location as been successfully submitted');
 
     }
 
@@ -235,15 +239,39 @@ class AuthController extends Controller
     {
 
         $tank_size = $request->tank_size;
+        $email = $request->email;
+        $password = $request->password;
 
-        $update = User::where('id', Auth::id())
+        $update = User::where('email', $email)
             ->update([
 
                 'tank_size' => $tank_size,
 
             ]);
 
-        return redirect('user-dashboard')->with('message', 'Your are all set');
+
+            if (Auth::attempt([
+
+                'email' => $email,
+                'password' => $password
+
+                ])) {
+
+                if (Auth::user()->type == 1) {
+                    return redirect('admin-dashboard');
+                }
+
+                if (Auth::user()->is_email_verified == 0) {
+
+                    return redirect('verify-email-code')->with('message', "Enter the verification code sent to your email provided");
+                } else {
+
+                    return redirect('user-dashboard')->with('message', 'Your are all set');;
+
+                }
+
+            }return back()->with('error', 'Incorrect Credentials');
+
 
     }
 

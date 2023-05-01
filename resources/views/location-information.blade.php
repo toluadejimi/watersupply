@@ -64,6 +64,11 @@
                                         @endforelse
                                     </select>
 
+                                    <input name="email" value="{{$email}}" hidden>
+
+                                    <input name="password" value="{{$password}}" hidden>
+
+
                                 </div>
 
                                 <div class="form-group">

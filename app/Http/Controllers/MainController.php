@@ -220,6 +220,7 @@ class MainController extends Controller
 
         $email = $request->email;
 
+        
 
         return view('set-password', compact('email'));
 
@@ -239,6 +240,8 @@ class MainController extends Controller
         $password = Hash::make($request->password);
 
         $check_email = User::where('email', $email)->first() ?? null;
+
+        dd($email);
 
         if ($check_email == null) {
 

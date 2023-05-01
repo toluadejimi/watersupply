@@ -220,7 +220,7 @@
 
                                     <div class="form-group">
                                         <label>Select Tank Size</label>
-                                        <select class="js-example-basic-single w-300" name="tank_id" id="tanl_size"
+                                        <select class="form-control" name="tank_id" id="tanl_size">
                                             class="form-control" required>
                                             <option value="">Choose Tank Size</option>
                                             @foreach ($tank_size as $data)

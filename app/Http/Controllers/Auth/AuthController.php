@@ -83,6 +83,7 @@ class AuthController extends Controller
         $email = $request->email;
         $gender = $request->gender;
         $password = $request->password;
+        $user_email = $request->email;
 
         $user = new User();
         $user->f_name = $f_name;
@@ -120,7 +121,7 @@ class AuthController extends Controller
         $body = $res->getBody();
         $array_body = json_decode($body);
 
-        return redirect('verify-email-code')->with('message', 'Enter the verification code sent to your email provided');
+        return redirect('verify-email-code', compact('user_email'))->with('message', 'Enter the verification code sent to your email provided');
 
     }
 

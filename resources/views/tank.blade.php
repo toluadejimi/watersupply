@@ -52,7 +52,7 @@
 
                             <h4>Water Tank Information</h4>
                             <h6 class="font-weight-light">Set your water tank information</h6>
-                            <form class="pt-3" action="/tank-info" method="POST">
+                            <form class="pt-3" action="/tank-info" method="GET">
                                 @csrf
 
                                 <div class="form-group">
@@ -66,7 +66,7 @@
 
                                 <input name="password" value="{{$password}}" hidden>
 
-                                
+
 
                                 <div class="mt-3">
                                     <button a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"

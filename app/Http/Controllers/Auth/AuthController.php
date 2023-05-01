@@ -147,6 +147,9 @@ class AuthController extends Controller
 
         $password = $request->password;
 
+
+        $locations = Location::all();
+
         $f_name = User::where('email',$email)
         ->first()->f_name;
 
@@ -182,7 +185,7 @@ class AuthController extends Controller
             $body = $res->getBody();
             $array_body = json_decode($body);
 
-            return view('location-information', compact('email', 'password'))->with('message', 'Your email has been verified');
+            return view('location-information', compact('email', 'password', 'locations'))->with('message', 'Your email has been verified');
 
         }
 

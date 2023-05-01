@@ -268,7 +268,7 @@ class MainController extends Controller
 
 
 
-        return redirect('welcome')->with('message', "Password Resest Successfully, Please login to continue");
+        return redirect('welcome')->with('message', "Password resest successful, Please login to continue");
 
 
     }

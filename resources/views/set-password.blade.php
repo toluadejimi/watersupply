@@ -59,7 +59,7 @@
                                         placeholder="Enter your password">
                                 </div>
 
-                                <input name="email" value="{{$email}}" >
+                                <input name="email" value="{{$email}}" hidden>
 
 
                                 <div class="form-group">

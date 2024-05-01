@@ -1,0 +1,165 @@
+<!doctype html>
+
+<title>CodeMirror: Language Modes</title>
+<meta charset="utf-8"/>
+<link rel=stylesheet href="../doc/docs.css">
+
+<div id=nav>
+  <a href="http://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../doc/logo.png"></a>
+
+  <ul>
+    <li><a href="../user-dashboard">Home</a>
+    <li><a href="../doc/manual.html">Manual</a>
+    <li><a href="https://github.com/codemirror/codemirror">Code</a>
+  </ul>
+  <ul>
+    <li><a class=active href="#">Language modes</a>
+  </ul>
+</div>
+
+<article>
+
+  <h2>Language modes</h2>
+
+  <p>This is a list of every mode in the distribution. Each mode lives
+in a subdirectory of the <code>mode/</code> directory, and typically
+defines a single JavaScript file that implements the mode. Loading
+such file will make the language available to CodeMirror, through
+the <a href="../doc/manual.html#option_mode"><code>mode</code></a>
+option.</p>
+
+  <div style="-webkit-columns: 100px 2; -moz-columns: 100px 2; columns: 100px 2;">
+    <ul style="margin-top: 0">
+      <li><a href="apl/user-dashboard">APL</a></li>
+      <li><a href="asn.1/user-dashboard">ASN.1</a></li>
+      <li><a href="asterisk/user-dashboard">Asterisk dialplan</a></li>
+      <li><a href="brainfuck/user-dashboard">Brainfuck</a></li>
+      <li><a href="clike/user-dashboard">C, C++, C#</a></li>
+      <li><a href="clike/user-dashboard">Ceylon</a></li>
+      <li><a href="clojure/user-dashboard">Clojure</a></li>
+      <li><a href="css/gss.html">Closure Stylesheets (GSS)</a></li>
+      <li><a href="cmake/user-dashboard">CMake</a></li>
+      <li><a href="cobol/user-dashboard">COBOL</a></li>
+      <li><a href="coffeescript/user-dashboard">CoffeeScript</a></li>
+      <li><a href="commonlisp/user-dashboard">Common Lisp</a></li>
+      <li><a href="crystal/user-dashboard">Crystal</a></li>
+      <li><a href="css/user-dashboard">CSS</a></li>
+      <li><a href="cypher/user-dashboard">Cypher</a></li>
+      <li><a href="python/user-dashboard">Cython</a></li>
+      <li><a href="d/user-dashboard">D</a></li>
+      <li><a href="dart/user-dashboard">Dart</a></li>
+      <li><a href="django/user-dashboard">Django</a> (templating language)</li>
+      <li><a href="dockerfile/user-dashboard">Dockerfile</a></li>
+      <li><a href="diff/user-dashboard">diff</a></li>
+      <li><a href="dtd/user-dashboard">DTD</a></li>
+      <li><a href="dylan/user-dashboard">Dylan</a></li>
+      <li><a href="ebnf/user-dashboard">EBNF</a></li>
+      <li><a href="ecl/user-dashboard">ECL</a></li>
+      <li><a href="eiffel/user-dashboard">Eiffel</a></li>
+      <li><a href="https://github.com/optick/codemirror-mode-elixir">Elixir</a></li>
+      <li><a href="elm/user-dashboard">Elm</a></li>
+      <li><a href="erlang/user-dashboard">Erlang</a></li>
+      <li><a href="factor/user-dashboard">Factor</a></li>
+      <li><a href="fcl/user-dashboard">FCL</a></li>
+      <li><a href="forth/user-dashboard">Forth</a></li>
+      <li><a href="fortran/user-dashboard">Fortran</a></li>
+      <li><a href="mllike/user-dashboard">F#</a></li>
+      <li><a href="gas/user-dashboard">Gas</a> (AT&amp;T-style assembly)</li>
+      <li><a href="gherkin/user-dashboard">Gherkin</a></li>
+      <li><a href="go/user-dashboard">Go</a></li>
+      <li><a href="groovy/user-dashboard">Groovy</a></li>
+      <li><a href="haml/user-dashboard">HAML</a></li>
+      <li><a href="handlebars/user-dashboard">Handlebars</a></li>
+      <li><a href="haskell/user-dashboard">Haskell</a> (<a href="haskell-literate/user-dashboard">Literate</a>)</li>
+      <li><a href="haxe/user-dashboard">Haxe</a></li>
+      <li><a href="htmlembedded/user-dashboard">HTML embedded</a> (JSP, ASP.NET)</li>
+      <li><a href="htmlmixed/user-dashboard">HTML mixed-mode</a></li>
+      <li><a href="http/user-dashboard">HTTP</a></li>
+      <li><a href="idl/user-dashboard">IDL</a></li>
+      <li><a href="clike/user-dashboard">Java</a></li>
+      <li><a href="javascript/user-dashboard">JavaScript</a> (<a href="jsx/user-dashboard">JSX</a>)</li>
+      <li><a href="jinja2/user-dashboard">Jinja2</a></li>
+      <li><a href="julia/user-dashboard">Julia</a></li>
+      <li><a href="kotlin/user-dashboard">Kotlin</a></li>
+      <li><a href="css/less.html">LESS</a></li>
+      <li><a href="livescript/user-dashboard">LiveScript</a></li>
+      <li><a href="lua/user-dashboard">Lua</a></li>
+      <li><a href="markdown/user-dashboard">Markdown</a> (<a href="gfm/user-dashboard">GitHub-flavour</a>)</li>
+      <li><a href="mathematica/user-dashboard">Mathematica</a></li>
+      <li><a href="mbox/user-dashboard">mbox</a></li>
+      <li><a href="mirc/user-dashboard">mIRC</a></li>
+      <li><a href="modelica/user-dashboard">Modelica</a></li>
+      <li><a href="mscgen/user-dashboard">MscGen</a></li>
+      <li><a href="mumps/user-dashboard">MUMPS</a></li>
+      <li><a href="nginx/user-dashboard">Nginx</a></li>
+      <li><a href="nsis/user-dashboard">NSIS</a></li>
+      <li><a href="ntriples/user-dashboard">N-Triples/N-Quads</a></li>
+      <li><a href="clike/user-dashboard">Objective C</a></li>
+      <li><a href="mllike/user-dashboard">OCaml</a></li>
+      <li><a href="octave/user-dashboard">Octave</a> (MATLAB)</li>
+      <li><a href="oz/user-dashboard">Oz</a></li>
+      <li><a href="pascal/user-dashboard">Pascal</a></li>
+      <li><a href="pegjs/user-dashboard">PEG.js</a></li>
+      <li><a href="perl/user-dashboard">Perl</a></li>
+      <li><a href="asciiarmor/user-dashboard">PGP (ASCII armor)</a></li>
+      <li><a href="php/user-dashboard">PHP</a></li>
+      <li><a href="pig/user-dashboard">Pig Latin</a></li>
+      <li><a href="powershell/user-dashboard">PowerShell</a></li>
+      <li><a href="properties/user-dashboard">Properties files</a></li>
+      <li><a href="protobuf/user-dashboard">ProtoBuf</a></li>
+      <li><a href="pug/user-dashboard">Pug</a></li>
+      <li><a href="puppet/user-dashboard">Puppet</a></li>
+      <li><a href="python/user-dashboard">Python</a></li>
+      <li><a href="q/user-dashboard">Q</a></li>
+      <li><a href="r/user-dashboard">R</a></li>
+      <li><a href="rpm/user-dashboard">RPM</a></li>
+      <li><a href="rst/user-dashboard">reStructuredText</a></li>
+      <li><a href="ruby/user-dashboard">Ruby</a></li>
+      <li><a href="rust/user-dashboard">Rust</a></li>
+      <li><a href="sas/user-dashboard">SAS</a></li>
+      <li><a href="sass/user-dashboard">Sass</a></li>
+      <li><a href="spreadsheet/user-dashboard">Spreadsheet</a></li>
+      <li><a href="clike/scala.html">Scala</a></li>
+      <li><a href="scheme/user-dashboard">Scheme</a></li>
+      <li><a href="css/scss.html">SCSS</a></li>
+      <li><a href="shell/user-dashboard">Shell</a></li>
+      <li><a href="sieve/user-dashboard">Sieve</a></li>
+      <li><a href="slim/user-dashboard">Slim</a></li>
+      <li><a href="smalltalk/user-dashboard">Smalltalk</a></li>
+      <li><a href="smarty/user-dashboard">Smarty</a></li>
+      <li><a href="solr/user-dashboard">Solr</a></li>
+      <li><a href="soy/user-dashboard">Soy</a></li>
+      <li><a href="stylus/user-dashboard">Stylus</a></li>
+      <li><a href="sql/user-dashboard">SQL</a> (several dialects)</li>
+      <li><a href="sparql/user-dashboard">SPARQL</a></li>
+      <li><a href="clike/user-dashboard">Squirrel</a></li>
+      <li><a href="swift/user-dashboard">Swift</a></li>
+      <li><a href="stex/user-dashboard">sTeX, LaTeX</a></li>
+      <li><a href="tcl/user-dashboard">Tcl</a></li>
+      <li><a href="textile/user-dashboard">Textile</a></li>
+      <li><a href="tiddlywiki/user-dashboard">Tiddlywiki</a></li>
+      <li><a href="tiki/user-dashboard">Tiki wiki</a></li>
+      <li><a href="toml/user-dashboard">TOML</a></li>
+      <li><a href="tornado/user-dashboard">Tornado</a> (templating language)</li>
+      <li><a href="troff/user-dashboard">troff</a> (for manpages)</li>
+      <li><a href="ttcn/user-dashboard">TTCN</a></li>
+      <li><a href="ttcn-cfg/user-dashboard">TTCN Configuration</a></li>
+      <li><a href="turtle/user-dashboard">Turtle</a></li>
+      <li><a href="twig/user-dashboard">Twig</a></li>
+      <li><a href="vb/user-dashboard">VB.NET</a></li>
+      <li><a href="vbscript/user-dashboard">VBScript</a></li>
+      <li><a href="velocity/user-dashboard">Velocity</a></li>
+      <li><a href="verilog/user-dashboard">Verilog/SystemVerilog</a></li>
+      <li><a href="vhdl/user-dashboard">VHDL</a></li>
+      <li><a href="vue/user-dashboard">Vue.js app</a></li>
+      <li><a href="webidl/user-dashboard">Web IDL</a></li>
+      <li><a href="xml/user-dashboard">XML/HTML</a></li>
+      <li><a href="xquery/user-dashboard">XQuery</a></li>
+      <li><a href="yacas/user-dashboard">Yacas</a></li>
+      <li><a href="yaml/user-dashboard">YAML</a></li>
+      <li><a href="yaml-frontmatter/user-dashboard">YAML frontmatter</a></li>
+      <li><a href="z80/user-dashboard">Z80</a></li>
+    </ul>
+  </div>
+
+</article>

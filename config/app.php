@@ -217,7 +217,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTAuthFactory' => Tymon\JWTAuth\Facades\JWTAuthFactory::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
 
 

@@ -111,7 +111,11 @@ Route::get('log-out', [AuthController::class,'log_out']);
 
 //Registration
 Route::get('/register', [AuthController::class,'register_view']);
+
 Route::post('register-now', [AuthController::class,'register_now']);
+
+Route::post('resend-code', [AuthController::class,'resend_code']);
+
 
 //verification
 Route::get('verify-email-code', [AuthController::class,'verify_email_code']);
@@ -212,27 +216,6 @@ Route::group(['middleware' => 'adminAuth'],function(){
     //Support
     Route::get('/support', [MainController::class,'support']);
     Route::post('/post-support', [MainController::class,'post_support']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     Route::get('/profile', [MainController::class,'profile']);

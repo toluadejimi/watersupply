@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 class AuthController extends Controller
@@ -67,10 +68,6 @@ class AuthController extends Controller
 
         $email_code = $random = mt_rand(100000, 999999);
 
-        $api_key = env('ELASTIC_API');
-        $from = env('FROM_API');
-        $app_name = env('APP_NAME');
-
         $request->validate([
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -97,33 +94,55 @@ class AuthController extends Controller
         $user->password = bcrypt($password);
         $user->save();
 
-        $client = new Client([
-            'base_uri' => 'https://api.elasticemail.com',
-        ]);
+         $data = array(
+             'fromsender' => 'noreply@water.tomitechltd.com', 'Waters',
+             'subject' => "Verification Code",
+             'toreceiver' => $email,
+             'sms_code' => $email_code,
+             'f_name' => $f_name,
+             'email_code' =>  $email_code,
+             'app_name' => "WATERS"
+         );
 
-        // The response to get
-        $res = $client->request('GET', '/v2/email/send', [
-            'query' => [
+         Mail::send('notification.email-code', ["data1" => $data], function ($message) use ($data) {
+             $message->from($data['fromsender']);
+             $message->to($data['toreceiver']);
+             $message->subject($data['subject']);
+         });
 
-                'apikey' => "$api_key",
-                'from' => "$from",
-                'fromName' => $app_name,
-                'sender' => "$from",
-                'senderName' => $app_name,
-                'subject' => 'Verification Code',
-                'to' => "$email",
-                'bodyHtml' => view('notification.email-code', compact('f_name', 'email_code', 'app_name'))->render(),
-                'encodingType' => 0,
-
-            ],
-        ]);
-
-        $body = $res->getBody();
-        $array_body = json_decode($body);
 
         return view('verify-email-code', compact('user_email', 'password'));
 
     }
+
+
+    public function resend_code(Request $request)
+    {
+
+       $usr =  User::where('email', $request->email)->first();
+
+        $data = array(
+            'fromsender' => 'noreply@water.tomitechltd.com', 'Waters',
+            'subject' => "Verification Code",
+            'toreceiver' => $request->email,
+            'sms_code' => $usr->email_code,
+            'f_name' => $usr->f_name,
+            'email_code' =>  $usr->email_code,
+            'app_name' => "WATERS"
+        );
+
+        Mail::send('notification.email-code', ["data1" => $data], function ($message) use ($data) {
+            $message->from($data['fromsender']);
+            $message->to($data['toreceiver']);
+            $message->subject($data['subject']);
+        });
+
+        return back()->with('success', 'Code resent successfully');
+
+
+    }
+
+
 
     public function verify_email_code(Request $request)
     {
@@ -265,7 +284,6 @@ class AuthController extends Controller
                 }
 
                 if (Auth::user()->is_email_verified == 0) {
-
                     return redirect('verify-email-code')->with('message', "Enter the verification code sent to your email provided");
                 } else {
 

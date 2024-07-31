@@ -18,14 +18,9 @@ class ApiAuthController extends Controller
     public $failedStatus = false;
 
 
-
-
-
-
-
     public function register(Request $request)
 {
-    // Validate request data
+
     $validator = Validator::make($request->all(), [
         'f_name' => 'required|string|max:255',
         'l_name' => 'required|string|max:255',
@@ -36,7 +31,7 @@ class ApiAuthController extends Controller
         'password' => 'required|string|confirmed|max:255',
     ]);
 
-    // Return errors if validation error occur.
+
     if ($validator->fails()) {
         $errors = $validator->errors();
         return response()->json([
@@ -44,7 +39,6 @@ class ApiAuthController extends Controller
         ], 400);
     }
 
-    // Check if validation pass then create user and auth token. Return the auth token
     if ($validator->passes()) {
         $user = User::create([
             'f_name' => $request->f_name,
@@ -63,11 +57,8 @@ class ApiAuthController extends Controller
         ]);
 
 
-        //$token = $user->createToken('auth_token')->plainTextToken;
-
         $token = $user->createToken('API Token')->accessToken;
 
-       // $token = auth()->user()->createToken('API Token')->accessToken;
 
 
         return response()->json([

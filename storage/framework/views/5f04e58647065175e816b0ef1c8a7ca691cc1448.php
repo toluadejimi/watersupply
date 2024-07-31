@@ -68,9 +68,9 @@
 							<td style="padding:30px;background-color:#ffffff;">
 								<h1
 									style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;">
-									Hi <?php echo e($f_name); ?></h1>
+									Hi <?php echo e($data1["f_name"]); ?></h1>
 								<p style="margin:0;">Your verification code is <br>
-								<h2><?php echo e($email_code); ?></h2>
+								<h2><?php echo e($data1["email_code"]); ?></h2>
 								</p>
 
 
@@ -80,7 +80,7 @@
 
 						<tr>
 							<td style="padding:30px;background-color:#ffffff;">
-								<p style="margin:0;">Thanks for choosing <?php echo e($app_name); ?><br>
+								<p style="margin:0;">Thanks for choosing <?php echo e($data1["app_name"]); ?><br>
 
                             </p>
 

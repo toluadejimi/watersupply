@@ -129,7 +129,7 @@
                 <p> No code yet?  Please wait for 1 min before you can resend code or check your spam folder and report not spam. </p>
                 <span></span>
 
-                <a href="/send-verification-code">
+                <a href="/resend-code?email={{Auth::user()->email}}">
                   <span>Resend Code</span>
                 </a>
               </p>
